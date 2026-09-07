@@ -1,0 +1,383 @@
+{
+  "intents": [
+    {
+      "id": "greeting",
+      "examples": [
+        "kumusta",
+        "hello",
+        "hi",
+        "magandang araw",
+        "kumusta po",
+        "good morning",
+        "meron po ba dito",
+        "kamusta",
+        "kamusta po",
+        "musta",
+        "musta po",
+        "hoy",
+        "uy",
+        "magandang gabi",
+        "magandang umaga",
+        "magandang hapon"
+      ],
+      "examples_en": [
+        "hello",
+        "hi there",
+        "good morning",
+        "good afternoon",
+        "is anyone there",
+        "hey"
+      ],
+      "responses": [
+        "Kumusta! Ako si KARAPATAN, parang kaibigan mong pwede mong tanungin tungkol sa mga karapatan mo, o kung ano ang RA 9344.",
+        "Hi! Nandito ako para tumulong. Huwag kang mahiya magtanong, kahit ano pa 'yan!"
+      ],
+      "responses_en": [
+        "Hi there! I'm KARAPATAN, your friendly helper. You can ask me about your rights, or about RA 9344.",
+        "Hello! I'm here to help. Don't be shy — ask me anything!"
+      ]
+    },
+    {
+      "id": "thanks",
+      "examples": [
+        "salamat",
+        "maraming salamat",
+        "thank you",
+        "salamat po sa tulong",
+        "okay salamat"
+      ],
+      "examples_en": [
+        "thank you",
+        "thanks a lot",
+        "thanks for the help",
+        "ok thank you",
+        "thank you so much"
+      ],
+      "responses": [
+        "Walang anuman! Bumalik ka lang ulit kung may tanong ka pa, ha?",
+        "Walang anuman po! Ligtas ka, at maraming taong gustong tumulong sa 'yo."
+      ],
+      "responses_en": [
+        "You're welcome! Come back anytime you have more questions.",
+        "You're welcome! You're safe, and lots of people want to help you."
+      ]
+    },
+    {
+      "id": "ra9344_definition",
+      "examples": [
+        "ano ang RA 9344",
+        "ano yung batas na ito",
+        "anong batas ang gumagabay sa mga menor de edad",
+        "ano ang juvenile justice and welfare act",
+        "paliwanagin mo ang RA 9344",
+        "bakit may batas para sa mga batang may kaso"
+      ],
+      "examples_en": [
+        "what is RA 9344",
+        "what is this law",
+        "what law guides minors",
+        "what is the juvenile justice and welfare act",
+        "can you explain RA 9344",
+        "why is there a law for children with cases"
+      ],
+      "responses": [
+        "Ang RA 9344 ay batas na tumutulong sa mga batang may kaso.<br><br>• Hindi agad pinaparusahan ang bata<br>• Tinutulungan muna siyang magbago<br>• Naniniwala itong may pagkakataon pa ang bawat bata"
+      ],
+      "responses_en": [
+        "RA 9344 is a law that helps children who get into trouble.<br><br>• It doesn't punish right away<br>• It helps the child change first<br>• It believes every child deserves a second chance"
+      ]
+    },
+    {
+      "id": "minimum_age",
+      "examples": [
+        "ilang taon dapat bago managot sa batas",
+        "ano ang minimum age of criminal responsibility",
+        "pwede pa ba akong tulungan kahit minor ako",
+        "ano yung mangyayari sa akin kapag under eighteen pa ako",
+        "may edad ba bago maituring na responsable sa batas",
+        "hanggang ilang taon covered ng RA 9344"
+      ],
+      "examples_en": [
+        "how old do i have to be before i'm liable under the law",
+        "what is the minimum age of criminal responsibility",
+        "can i still be helped even if i'm a minor",
+        "what happens to me if i'm still under eighteen",
+        "is there an age before i'm considered responsible under the law",
+        "up to what age does RA 9344 cover"
+      ],
+      "responses": [
+        "Depende sa edad mo ang mangyayari:<br><br>• 15 taong gulang pababa — hindi ka mananagot sa krimen, tutulungan ka lang<br>• 16-17 taong gulang at alam mong mali ang ginawa — may proseso na tinatawag na diversion<br><br>Sa lahat ng edad, tulong ang layunin, hindi parusa."
+      ],
+      "responses_en": [
+        "It depends on your age:<br><br>• 15 years old or younger — you won't be held responsible, you'll just be helped<br>• 16-17 years old and you knew it was wrong — there's a process called diversion<br><br>At every age, the goal is to help, not to punish."
+      ]
+    },
+    {
+      "id": "discernment",
+      "examples": [
+        "ano ang discernment",
+        "paano malalaman kung may discernment ako",
+        "ano ibig sabihin ng may discernment",
+        "sino ang tinuturing na may discernment"
+      ],
+      "examples_en": [
+        "what is discernment",
+        "how would i know if i have discernment",
+        "what does having discernment mean",
+        "who is considered to have discernment"
+      ],
+      "responses": [
+        "Ang discernment ay kung alam mo bang mali o tama ang ginawa mo noong panahong 'yon.<br><br>Titingnan ito ng social worker base sa:<br>• edad mo<br>• sitwasyon<br>• antas ng pag-unawa mo"
+      ],
+      "responses_en": [
+        "Discernment just means: did you know, at the time, that what you did was right or wrong?<br><br>A social worker looks at:<br>• your age<br>• the situation<br>• how much you understood"
+      ]
+    },
+    {
+      "id": "diversion",
+      "examples": [
+        "ano yung diversion tsaka paano po yun nangyayari",
+        "ano ang diversion program",
+        "paano gumagana ang diversion",
+        "sino ang dumadaan sa diversion"
+      ],
+      "examples_en": [
+        "what is diversion and how does it happen",
+        "what is a diversion program",
+        "how does diversion work",
+        "who goes through diversion"
+      ],
+      "responses": [
+        "Ang diversion ay parang usapan, hindi kaso sa korte.<br><br>• Kausap mo ang barangay o social worker<br>• Sama-sama ninyong aayusin ang nangyari<br>• Layunin: maintindihan mo ang ginawa mo at hindi na ito maulit"
+      ],
+      "responses_en": [
+        "Diversion is like a talk, instead of a court case.<br><br>• You meet with the barangay or a social worker<br>• Together you work things out<br>• The goal: you understand what happened, and it doesn't happen again"
+      ]
+    },
+    {
+      "id": "intervention",
+      "examples": [
+        "ano ang intervention program",
+        "paano gumagana ang intervention",
+        "sino ang dumadaan sa intervention"
+      ],
+      "examples_en": [
+        "what is an intervention program",
+        "how does intervention work",
+        "who goes through intervention"
+      ],
+      "responses": [
+        "Ang intervention ay tulong na ibinibigay sa mga batang 15 pababa.<br><br>• Hindi ka managot sa krimen<br>• May counseling at tulong sa pag-aaral<br>• May suporta mula sa iyong pamilya"
+      ],
+      "responses_en": [
+        "Intervention is help given to children 15 and younger.<br><br>• You won't face criminal charges<br>• You get counseling and learning support<br>• Your family helps too"
+      ]
+    },
+    {
+      "id": "rights_general",
+      "examples": [
+        "pwede ba akong mag-ask kung ano yung rights ko",
+        "ano ang mga karapatan ko",
+        "may karapatan ba akong tumahimik",
+        "may karapatan ba akong tumawag ng magulang ko",
+        "ano ang karapatan ko kapag nahuli ako",
+        "pwede ba akong humingi ng abogado"
+      ],
+      "examples_en": [
+        "can i ask what my rights are",
+        "what are my rights",
+        "do i have the right to stay silent",
+        "do i have the right to call my parent",
+        "what are my rights if i get arrested",
+        "can i ask for a lawyer"
+      ],
+      "responses": [
+        "May mga karapatan ka bilang bata:<br><br>• Pwede kang manahimik hangga't wala kang abogado<br>• Pwede mong tawagan ang magulang mo<br>• Hindi ka dapat isama sa mga matatanda kung ikukulong<br>• Dapat kang tratuhin nang may respeto<br><br>Hindi ka mag-isa dito."
+      ],
+      "responses_en": [
+        "You have rights as a child:<br><br>• You can stay silent until you have a lawyer<br>• You can call your parent<br>• You shouldn't be placed with adults if detained<br>• You should be treated with respect<br><br>You are not alone in this."
+      ]
+    },
+    {
+      "id": "who_can_help",
+      "examples": [
+        "sino ang makakatulong sa akin",
+        "saan ako pwede lumapit",
+        "sino yung pwede kong lapitan para tulungan ako",
+        "bakit kailangan pa ng barangay dito sa kaso ko",
+        "may tatawagan ba ako",
+        "sino ang dapat kong kausapin",
+        "kanino ako pwedeng kumausap tungkol dito"
+      ],
+      "examples_en": [
+        "who can help me",
+        "where can i go for help",
+        "who can i turn to for help",
+        "why does the barangay matter in my case",
+        "is there someone i can call",
+        "who should i talk to",
+        "who can i talk to about this"
+      ],
+      "responses": [
+        "Maraming pwede mong lapitan:<br><br>• Ang barangay mo<br>• Ang social worker (LSWDO)<br>• Abogado mula sa PAO (libre)<br>• Bahay Pag-asa, kung kailangan mo ng matutuluyan<br><br>Karaniwan, sa barangay muna nagsisimula ang tulong."
+      ],
+      "responses_en": [
+        "Lots of people can help you:<br><br>• Your barangay<br>• A social worker (LSWDO)<br>• A free lawyer from PAO<br>• Bahay Pag-asa, if you need a safe place to stay<br><br>Help usually starts at the barangay."
+      ]
+    },
+    {
+      "id": "what_case",
+      "examples": [
+        "paano ko malalaman kung anong kaso yung meron ako",
+        "nahuli ako kasi nag-away kami sa labas first time ko lang po",
+        "ano gagawin ko may kaso ako",
+        "first offense ko lang ito ano mangyayari"
+      ],
+      "examples_en": [
+        "how do i know what kind of case i have",
+        "i got caught because we fought outside, it's my first time",
+        "what should i do, i have a case",
+        "this is my first offense, what happens now"
+      ],
+      "responses": [
+        "Depende ito sa nangyari sa 'yo.<br><br>• Kausapin mo ang barangay o social worker<br>• Titingnan nila ang edad mo at ang detalye ng kaso<br>• Sila ang makakatulong sa susunod na hakbang<br><br>Tandaan: hindi ito legal advice — kausapin mo rin ang abogado o isang taong mapagkakatiwalaan."
+      ],
+      "responses_en": [
+        "It depends on what happened.<br><br>• Talk to your barangay or a social worker<br>• They'll look at your age and the details<br>• They can help you figure out the next step<br><br>Remember: this isn't legal advice — also talk to a lawyer or someone you trust."
+      ]
+    },
+    {
+      "id": "fear_emotional",
+      "examples": [
+        "hindi ko alam kung ano gagawin ko na-involve kasi ako sa gulo",
+        "natatakot ako sa pulis hindi ko alam kung ano isasagot ko",
+        "natatakot ako",
+        "kinakabahan ako sa kaso ko",
+        "hindi ko alam paano magsisimula"
+      ],
+      "examples_en": [
+        "i don't know what to do, i got involved in trouble",
+        "i'm scared of the police, i don't know what to say",
+        "i'm scared",
+        "i'm nervous about my case",
+        "i don't know how to start"
+      ],
+      "responses": [
+        "Normal lang matakot.<br><br>Hindi ka nag-iisa — may mga taong handang tumulong:<br>• Ang magulang mo<br>• Ang barangay<br>• Isang social worker<br><br>Huminga muna nang malalim, unti-unti lang natin 'to."
+      ],
+      "responses_en": [
+        "It's okay to feel scared.<br><br>You're not alone — people are ready to help:<br>• Your parent<br>• The barangay<br>• A social worker<br><br>Take a deep breath first, we'll go step by step."
+      ]
+    },
+    {
+      "id": "vices_peer_pressure",
+      "examples": [
+        "yung mga kaibigan ko sabi nila okay lang mag-inom pero natatakot ako",
+        "gusto ko sana mag-stop sa vices ko pero ang hirap",
+        "nag-try lang po ako mag-smoking kasi na-pressure ako ng barkada",
+        "pinipilit ako ng barkada gumawa ng bagay na alam kong mali",
+        "paano ako tumanggi sa barkada"
+      ],
+      "examples_en": [
+        "my friends say it's okay to drink but i'm scared",
+        "i want to stop my vices but it's hard",
+        "i only tried smoking because my friends pressured me",
+        "my friends are pressuring me to do something i know is wrong",
+        "how do i say no to my friends"
+      ],
+      "responses": [
+        "Naiintindihan ko, mahirap tumanggi sa barkada.<br><br>• Ang totoong kaibigan ay hindi ka pipilitin gumawa ng mali<br>• Hindi ka nag-iisa kung gusto mong huminto<br>• Pwede kang humingi ng tulong sa magulang, guro, o social worker"
+      ],
+      "responses_en": [
+        "I understand — it's hard to say no to friends.<br><br>• Real friends won't force you to do something wrong<br>• You're not alone if you want to stop<br>• You can ask a parent, teacher, or social worker for help"
+      ]
+    },
+    {
+      "id": "totoo_at_parusa",
+      "examples": [
+        "kung sasabihin ko yung totoo mababawasan ba yung parusa sa akin",
+        "makakatulong ba kung sasabihin ko ang totoo",
+        "mas mabuti ba kung aaminin ko na lang lahat"
+      ],
+      "examples_en": [
+        "if i tell the truth will my punishment be reduced",
+        "does it help if i tell the truth",
+        "is it better if i just admit everything"
+      ],
+      "responses": [
+        "Oo, malaking tulong ang totoo.<br><br>• Gusto ng batas na matuto ka, hindi lang parusahan<br>• Mas madali kang matutulungan kapag totoo ang sinabi mo<br>• Mas mahirap ang lahat kapag nagtatago ng totoo"
+      ],
+      "responses_en": [
+        "Yes, telling the truth helps a lot.<br><br>• The law wants you to learn, not just be punished<br>• It's easier to help you when you're honest<br>• Hiding the truth just makes things harder"
+      ]
+    },
+    {
+      "id": "detention_jail",
+      "examples": [
+        "makukulong ba ako",
+        "ikukulong ba ako",
+        "mapapasok ba ako sa kulungan",
+        "posible ba akong makulong",
+        "papasukin ba ako sa bilangguan",
+        "ano ang parusa sakin",
+        "dadalhin ba ako sa kulungan",
+        "ikukulong ba ako kasama ng matatanda"
+      ],
+      "examples_en": [
+        "will i go to jail",
+        "can i be imprisoned",
+        "will i be put in jail",
+        "what happens if i get caught",
+        "will i be detained",
+        "what is my punishment",
+        "will i be locked up",
+        "will i be jailed with adults"
+      ],
+      "responses": [
+        "Hindi ka basta-basta makukulong.<br><br>• 15 taong gulang pababa — hindi ka ikukulong, tutulungan ka lang (intervention)<br>• 16-17 na may discernment — dumadaan sa diversion, hindi tuwirang kulungan<br>• Kung kailangan ng ligtas na matutuluyan, sa Bahay Pag-asa ka dadalhin, hindi sa regular na kulungan, at hindi ka isasama sa mga matatandang bilanggo<br><br>Ang layunin ng batas: tulungan ka, hindi ikulong."
+      ],
+      "responses_en": [
+        "You won't just be thrown in jail.<br><br>• 15 years old or younger — you won't be jailed, you'll just be helped (intervention)<br>• 16-17 with discernment — you go through diversion, not straight to jail<br>• If you need a safe place to stay, you'd go to Bahay Pag-asa, not a regular jail, and you won't be placed with adult inmates<br><br>The goal of the law is to help you, not to lock you up."
+      ]
+    },
+    {
+      "id": "bot_help_menu",
+      "examples": [
+        "ano ang mga pwede kong itanong",
+        "ano pwede kong itanong sa iyo",
+        "ano ang alam mo",
+        "paano kita gagamitin",
+        "ano ang kaya mong sagutin",
+        "saan pwede tumulong dito",
+        "anong mga topic ang kaya mong sagutin"
+      ],
+      "examples_en": [
+        "what can i ask you",
+        "what do you know",
+        "what can you help me with",
+        "what topics can you answer",
+        "how do i use this chat",
+        "what are you able to answer"
+      ],
+      "responses": [
+        "Pwede mo akong tanungin tungkol sa:<br><br>• Ano ang RA 9344<br>• Minimum age at discernment<br>• Diversion at intervention<br>• Mga karapatan mo<br>• Sino ang makakatulong sa 'yo<br>• Kung makukulong ka ba<br><br>Pwede mo ring piliin ang mga tanong sa gilid kung ayaw mo nang mag-type."
+      ],
+      "responses_en": [
+        "You can ask me about:<br><br>• What RA 9344 is<br>• Minimum age and discernment<br>• Diversion and intervention<br>• Your rights<br>• Who can help you<br>• Whether you'll be jailed<br><br>You can also just pick one of the questions on the side if you don't want to type."
+      ]
+    },
+    {
+      "id": "fallback",
+      "examples": [],
+      "examples_en": [],
+      "responses": [
+        "Sorry, hindi ko masyadong naintindihan 'yon. Pwede mo bang subukang ulit sa mas simpleng paraan? O pumili na lang sa mga tanong sa gilid.",
+        "Pasensya na, hindi ko po nakuha 'yon. Baka gusto mong itanong nang mas simple, o piliin ang isa sa mga tanong sa kanan?"
+      ],
+      "responses_en": [
+        "Sorry, I didn't quite get your question. Could you try asking it in a simpler way? Or pick one of the questions on the side.",
+        "Sorry, I didn't quite understand that. Try asking it more simply, or check the questions on the right?"
+      ]
+    }
+  ]
+}

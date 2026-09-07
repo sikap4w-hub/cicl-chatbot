@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CICL Chatbot Support System</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>CICL Support System</h1>
+    <nav>
+      <button id="tab-chat" class="tab active" onclick="showView('chat')">Chat</button>
+      <button id="tab-game" class="tab" onclick="showView('game')">Laro</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- CHAT VIEW -->
+    <section id="view-chat" class="view">
+      <div id="messages" class="messages"></div>
+      <div class="input-row">
+        <input id="user-input" type="text" placeholder="I-type ang tanong mo..." autocomplete="off">
+        <button id="send-btn" onclick="sendMessage()">Send</button>
+      </div>
+      <p class="note">Speech input (Taglish) ay ikakabit dito mamaya.</p>
+    </section>
+
+    <!-- GAME VIEW (placeholder) -->
+    <section id="view-game" class="view hidden">
+      <div class="game-placeholder">
+        <h2>Applied Legal Consequence Game</h2>
+        <p>Dito ilalagay ang mga storyboard at branching scenario.</p>
+        <p class="note">(Ginagawa pa. Ito ang lalagyan ng laro.)</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/static/script.js"></script>
+</body>
+</html>

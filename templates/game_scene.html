@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="chat-header">
+  <a href="/mga-kuwento" class="back-btn">&larr;</a>
+  <div>
+    <div class="chat-title">{{ story.title }}</div>
+    <div class="chat-status">Kaso &middot; Kuwentong gawa-gawa lang</div>
+  </div>
+</div>
+
+<div class="scene-layout">
+  <div class="scene-main" id="scene-main">
+    <div class="desk">
+      <div id="character" class="character"></div>
+    </div>
+    <div id="dialogue" class="dialogue-box"></div>
+    <div id="controls" class="controls"></div>
+  </div>
+
+  <aside class="scene-side">
+    <div class="side-label">MGA EBIDENSYA</div>
+    <div id="evidence-list"></div>
+  </aside>
+</div>
+
+<script>window.CASE = {{ case_json|safe }};</script>
+<script src="/static/game.js"></script>
+{% endblock %}

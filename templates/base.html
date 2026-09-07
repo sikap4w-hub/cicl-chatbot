@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaalaman at Karapatan</title>
+  <link rel="icon" type="image/png" href="/static/art/logo.png">
+  <link rel="stylesheet" href="/static/style.css?v=5">
+</head>
+<body class="welcome-bg">
+  <div class="app-shell">
+    <aside class="rail">
+      <div class="brand">
+        <span class="logo logo--img">
+          <img src="/static/art/logo.png" alt="Kaalaman at Karapatan logo" width="44" height="44">
+        </span>
+        <span class="brand-name">Kaalaman at<br>Karapatan</span>
+      </div>
+
+      <nav class="nav">
+        <a href="/menu" class="nav-item home {% if active == 'home' %}active{% endif %}">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 11l8-6 8 6M6 10v9h12v-9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-tl="Home" data-en="Home">Home</span>
+        </a>
+        <a href="/chat" class="nav-item chat {% if active == 'chat' %}active{% endif %}">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 5h14v10H9l-4 4V5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span data-tl="Makipag-usap" data-en="Chat">Makipag-usap</span>
+        </a>
+        <a href="/mga-kuwento" class="nav-item game {% if active == 'game' %}active{% endif %}">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="8" width="18" height="9" rx="4.5"/><path d="M8 12v3M6.5 13.5h3" stroke-linecap="round"/></svg>
+          <span data-tl="Maglaro" data-en="Play">Maglaro</span>
+        </a>
+      </nav>
+
+      <div class="rail-footer">
+        <div class="lang-toggle">
+          <button class="lang" id="lang-tl" type="button" data-lang-btn="tl">Filipino</button>
+          <button class="lang" id="lang-en" type="button" data-lang-btn="en">English</button>
+        </div>
+        <div class="badge badge-green" data-tl="✓ Anonymous session" data-en="✓ Anonymous session">✓ Anonymous session</div>
+        <button type="button" class="nav-item muted-item" id="help-btn"><span data-tl="Tulong" data-en="Help">Tulong</span></button>
+      </div>
+    </aside>
+
+    <main class="content lang-fade">
+      {% block content %}{% endblock %}
+    </main>
+  </div>
+
+  <div id="help-modal" class="overlay hidden">
+    <div class="modal-card lang-fade">
+      <h2 data-tl="Tulong" data-en="Help">Tulong</h2>
+      <ol class="instr-list">
+        <li data-tl-html="<b>Makipag-usap:</b> Magtanong sa chat tungkol sa iyong mga karapatan, RA 9344, o sa proseso kapag may kaso ang isang bata." data-en-html="<b>Chat:</b> Ask the chat about your rights, RA 9344, or what happens when a child has a case.">
+          <b>Makipag-usap:</b> Magtanong sa chat tungkol sa iyong mga karapatan, RA 9344, o sa proseso kapag may kaso ang isang bata.
+        </li>
+        <li data-tl-html="<b>Maglaro:</b> Maglaro bilang case worker sa <i>Ang Tulungan</i> &mdash; makinig sa kwento ng bata, suriin ang ebidensya, at gabayan sila sa tamang paraan." data-en-html="<b>Play:</b> Play as a case worker in <i>Ang Tulungan</i> &mdash; listen to a child's story, check the evidence, and guide them the right way.">
+          <b>Maglaro:</b> Maglaro bilang case worker sa <i>Ang Tulungan</i> &mdash; makinig sa kwento ng bata, suriin ang ebidensya, at gabayan sila sa tamang paraan.
+        </li>
+        <li data-tl="Walang account o pangalang kailangan &mdash; anonymous at ligtas ang lahat dito." data-en="No account or name needed &mdash; everything here is anonymous and safe.">
+          Walang account o pangalang kailangan &mdash; anonymous at ligtas ang lahat dito.
+        </li>
+        <li data-tl="Hindi legal advice ang mga sagot dito. Kung may tunay kang kaso o kailangan mo ng agarang tulong, kumausap ng barangay, Local Social Welfare and Development Office (LSWDO), o ibang trusted adult." data-en="Answers here are not legal advice. If you have an actual case or need urgent help, talk to your barangay, the Local Social Welfare and Development Office (LSWDO), or another trusted adult.">
+          Hindi legal advice ang mga sagot dito. Kung may tunay kang kaso o kailangan mo ng agarang tulong, kumausap ng barangay, Local Social Welfare and Development Office (LSWDO), o ibang trusted adult.
+        </li>
+      </ol>
+      <button class="btn btn--blue" id="help-close-btn" data-tl="Sige, salamat" data-en="Got it, thanks">Sige, salamat</button>
+    </div>
+  </div>
+
+  <script src="/static/lang.js?v=2"></script>
+  <script src="/static/script.js?v=7"></script>
+  <script>
+    (function () {
+      var helpBtn = document.getElementById("help-btn");
+      var helpModal = document.getElementById("help-modal");
+      var helpClose = document.getElementById("help-close-btn");
+      if (!helpBtn || !helpModal) return;
+      helpBtn.addEventListener("click", function () { helpModal.classList.remove("hidden"); });
+      helpClose.addEventListener("click", function () { helpModal.classList.add("hidden"); });
+      helpModal.addEventListener("click", function (e) {
+        if (e.target === helpModal) helpModal.classList.add("hidden");
+      });
+    })();
+  </script>
+</body>
+</html>

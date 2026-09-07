@@ -1,0 +1,124 @@
+{
+  "storyboards": [
+    {
+      "id": "cellphone",
+      "title": "Ang Cellphone sa Palengke",
+      "short": "Pagkuha ng cellphone at ang maaaring legal na consequence.",
+      "color": "orange",
+      "status": "ready",
+      "bata": {
+        "label": "Bata A",
+        "art": "bata01",
+        "mood_start": "neutral"
+      },
+      "intro": "Kumusta po. Nahiram ko lang naman po kasi yung cellphone sa palengke, balak ko naman po sanang isauli.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng tindera",
+          "text": "Nakita kong kinuha ng bata ang phone sa mesa at umalis agad, walang nagpaalam kahit kanino."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Kilala mo ba ang may-ari ng phone?",
+          "sagot": "Hindi po... pero nasa mesa lang po siya, akala ko okay lang.",
+          "mood": "kabado"
+        },
+        {
+          "q": "Sino ang nagbigay ng pahintulot na kunin ito?",
+          "sagot": "Wala po... pero balak ko naman po talagang isauli.",
+          "mood": "malungkot"
+        }
+      ],
+      "sugarcoat": {
+        "phrase": "nahiram ko lang",
+        "totoo": "kinuha nang walang pahintulot"
+      },
+      "pagbasa": [
+        {
+          "text": "Hiniram na may pahintulot ng may-ari",
+          "tama": false
+        },
+        {
+          "text": "Kinuha nang walang pahintulot",
+          "tama": true
+        }
+      ],
+      "resulta": {
+        "tapat": "Ang totoo, kinuha ang phone nang walang paalam, na maaaring maituring na pagnanakaw.",
+        "bakit": "Ang pagkuha ng gamit ng iba nang walang pahintulot ay mali, kahit may balak na isauli.",
+        "tamang_landas": "Sa ilalim ng RA 9344, kung labing-lima pababa ang bata, dadaan sa intervention program; kung labing-anim hanggang labing-pito at may discernment, sa diversion. Layunin ay maituwid, hindi parusahan.",
+        "huwag_tularan": "Ang ganitong gawi ay hindi dapat tularan, ngunit laging may pagkakataong magbago at itama."
+      },
+      "summary": [
+        "Ang magagandang salita ay hindi nagbabago sa totoong nangyari.",
+        "Ang exemption ay hindi pagtakas sa responsibilidad.",
+        "Mahalagang alamin ang totoo bago humusga.",
+        "May tamang landas at tulong sa ilalim ng RA 9344."
+      ]
+    },
+    {
+      "id": "nawawalang-gamit",
+      "title": "Ang Nawawalang Gamit",
+      "short": "Gamit na nahanap at hindi naibalik.",
+      "color": "purple",
+      "status": "soon"
+    },
+    {
+      "id": "away-eskwelahan",
+      "title": "Ang Away sa Eskwelahan",
+      "short": "Hindi pagkakaunawaan at kung paano naresolba.",
+      "color": "blue",
+      "status": "soon"
+    },
+    {
+      "id": "saradong-lugar",
+      "title": "Ang Pagpasok sa Saradong Lugar",
+      "short": "Lugar na hindi pwedeng pasukan.",
+      "color": "green",
+      "status": "soon"
+    },
+    {
+      "id": "bagay-hindi-iyo",
+      "title": "Ang Bagay na Hindi Iyo",
+      "short": "Pag-angkin ng bagay na iba ang may-ari.",
+      "color": "pink",
+      "status": "soon"
+    },
+    {
+      "id": "online-problema",
+      "title": "Ang Online na Problema",
+      "short": "Post at mensahe sa internet.",
+      "color": "purple",
+      "status": "soon"
+    },
+    {
+      "id": "gulong-nasira",
+      "title": "Ang Gulong Nasira",
+      "short": "Gamit ng iba na napinsala.",
+      "color": "blue",
+      "status": "soon"
+    },
+    {
+      "id": "pagsama-kaibigan",
+      "title": "Ang Pagsama sa Kaibigan",
+      "short": "Presyur mula sa barkada.",
+      "color": "green",
+      "status": "soon"
+    },
+    {
+      "id": "hindi-inaasahan",
+      "title": "Ang Hindi Inaasahang Pangyayari",
+      "short": "Aksidenteng may kinalaman sa iba.",
+      "color": "pink",
+      "status": "soon"
+    },
+    {
+      "id": "maling-desisyon",
+      "title": "Ang Maling Desisyon",
+      "short": "Desisyong may kasunod na consequence.",
+      "color": "purple",
+      "status": "soon"
+    }
+  ]
+}

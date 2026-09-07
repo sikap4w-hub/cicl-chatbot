@@ -1,0 +1,1072 @@
+{
+  "cases": [
+    {
+      "id": "cellphone",
+      "type": "krimen",
+      "status": "ready",
+      "title": "Ang Cellphone sa Palengke",
+      "caseno": "K-01",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "neutral",
+        "art": "bata01"
+      },
+      "intro": "Kumusta po. Nahiram ko lang naman po kasi yung cellphone sa palengke, balak ko naman po sanang isauli.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng tindera",
+          "text": "Nakita kong kinuha ng bata ang phone sa mesa at umalis agad, walang nagpaalam kahit kanino."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Kilala mo ba ang may-ari ng phone?",
+          "sagot": "Hindi po... pero nasa mesa lang po siya, akala ko okay lang.",
+          "mood": "kabado"
+        },
+        {
+          "q": "Sino ang nagbigay ng pahintulot na kunin ito?",
+          "sagot": "Wala po... pero balak ko naman po talagang isauli.",
+          "mood": "malungkot"
+        }
+      ],
+      "sugarcoat": {
+        "phrase": "nahiram ko lang",
+        "totoo": "kinuha nang walang pahintulot"
+      },
+      "tawag_magulang": [
+        {
+          "tanong": "Ano po ang alam niyo sa ginawa ng anak niyo?",
+          "sagot": "Nabalitaan ko lang po na may nawawalang cellphone sa palengke, hindi ko po alam kung siya ang may kagagawan."
+        },
+        {
+          "tanong": "May sinabi ba sa inyo ang anak niyo tungkol dito?",
+          "sagot": "Wala pong sinabi sa akin, pero pag-uwi niya galing palengke, may bitbit siyang cellphone na hindi ko po kilala."
+        },
+        {
+          "tanong": "Ano ang saloobin niyo bilang magulang?",
+          "sagot": "Nahihiya po ako, pero handa po kaming tumulong para maituwid siya at maibalik ang tiwala."
+        }
+      ],
+      "tama_desisyon": "inspect",
+      "pagbasa": [
+        {
+          "text": "Hiniram na may pahintulot ng may-ari",
+          "tama": false
+        },
+        {
+          "text": "Kinuha nang walang pahintulot",
+          "tama": true
+        }
+      ],
+      "resulta": {
+        "tapat": "Ang totoo, kinuha ang phone nang walang paalam, na maaaring maituring na pagnanakaw.",
+        "tamang_landas": "Sa ilalim ng RA 9344: kung labing-lima pababa, dadaan sa intervention; kung labing-anim hanggang labing-pito at may discernment, sa diversion. Layunin ay maituwid, hindi parusahan.",
+        "tandaan": "Ang ganitong gawi ay hindi dapat tularan, ngunit laging may pagkakataong magbago at itama."
+      },
+      "aral": "Ang magagandang salita ay hindi nagbabago sa totoong nangyari."
+    },
+    {
+      "id": "pitaka",
+      "type": "mabuti",
+      "status": "ready",
+      "title": "Ang Naibalik na Pitaka",
+      "caseno": "M-01",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "kabado",
+        "art": "bata02"
+      },
+      "intro": "Kumusta po. Nakakita po ako ng pitaka sa daan, dinala ko po agad sa barangay para maisauli sa may-ari.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng barangay",
+          "text": "Isinauli ng bata ang pitaka na buo ang laman at hinanap pa ang may-ari."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Bakit mo dinala sa barangay?",
+          "sagot": "Para po maibalik sa may-ari, baka po hinahanap nila.",
+          "mood": "neutral"
+        },
+        {
+          "q": "May kinuha ka bang laman?",
+          "sagot": "Wala po, buo po lahat nang isinauli ko.",
+          "mood": "ginhawa"
+        }
+      ],
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba na nakahanap ang anak niyo ng pitaka?",
+          "sagot": "Opo, sinabi niya po agad sa akin at sinamahan ko pa siya sa barangay para isauli."
+        },
+        {
+          "tanong": "Palagi ba siyang ganito katapat?",
+          "sagot": "Opo, palagi po namin siyang tinuturuan na maging matapat sa lahat ng bagay."
+        }
+      ],
+      "tama_desisyon": "clear",
+      "resulta": {
+        "tapat": "Totoo ang kuwento, isinauli ng bata ang nahanap na pitaka nang buo.",
+        "tamang_landas": "Ang ganitong katapatan ay dapat purihin at tularan.",
+        "tandaan": "Mahalagang huwag agad humusga, may mga batang gumagawa ng tama."
+      },
+      "aral": "Huwag agad maghinala, kilalanin ang mabuting gawa."
+    },
+    {
+      "id": "away",
+      "type": "krimen",
+      "status": "ready",
+      "title": "Ang Away sa Eskwelahan",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "kabado",
+        "art": "bata03"
+      },
+      "caseno": "K-02",
+      "intro": "Kumusta po. Nagtanggol lang po ako ng kaibigan ko, siya po ang unang sinaktan.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng guro",
+          "text": "Nakita kong una nang sumuntok ang kabilang bata, pero mas malakas ang sinuntok pabalik at nasugatan ito."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Sino ang unang sumuntok?",
+          "sagot": "Siya po talaga unang sumuntok, ako lang po sumuntok pabalik.",
+          "mood": "kabado"
+        },
+        {
+          "q": "Bakit malakas ang suntok mo?",
+          "sagot": "Nagalit po ako, hindi ko na po napigilan ang sarili ko.",
+          "mood": "malungkot"
+        }
+      ],
+      "tama_desisyon": "inspect",
+      "pagbasa": [
+        {
+          "text": "Self-defense lamang, walang labis",
+          "tama": false
+        },
+        {
+          "text": "Sobra sa depensa, may idinagdag na pananakit",
+          "tama": true
+        }
+      ],
+      "resulta": {
+        "tapat": "Totoo na siya ang unang sinaktan, ngunit ang ginawang pagganti ay sobra na sa depensa sa sarili.",
+        "tamang_landas": "Sa ilalim ng RA 9344, susuriin ang discernment ng bata bago magpasya sa intervention o diversion; layunin ay maituro ang tamang paraan ng paglutas ng gulo, hindi lalong pananakit.",
+        "tandaan": "May karapatan ipagtanggol ang sarili, ngunit dapat may hangganan ito."
+      },
+      "aral": "Ang pagtatanggol sa sarili ay hindi dapat maging dahilan para lumampas sa katwiran.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba ang tungkol sa awayan?",
+          "sagot": "Opo, nag-usap na po kami, humihingi po siya ng tawad sa naging labis niyang reaksyon."
+        },
+        {
+          "tanong": "Madalas ba siyang makasangkot sa gulo?",
+          "sagot": "Hindi po, ito lang po talaga ang unang beses, malambing at mahinahon po talaga siya."
+        }
+      ]
+    },
+    {
+      "id": "vandalismo",
+      "type": "krimen",
+      "status": "ready",
+      "title": "Ang Pader na Sinulatan",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "kabado",
+        "art": "bata04"
+      },
+      "caseno": "K-03",
+      "intro": "Kumusta po. Sumulat lang po ako ng pangalan namin sa pader, gusto lang po ipakita na magkaibigan kami.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng residente",
+          "text": "Nakita kong nagsulat ang bata gamit ang spray paint sa bagong pintang pader ng barangay hall."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Alam mo ba na bawal magsulat sa pader ng iba?",
+          "sagot": "Medyo po alam ko, pero hindi ko po inisip na malaking bagay.",
+          "mood": "kabado"
+        },
+        {
+          "q": "May pahintulot ba kayo mula sa may-ari?",
+          "sagot": "Wala po.",
+          "mood": "malungkot"
+        }
+      ],
+      "tama_desisyon": "inspect",
+      "pagbasa": [
+        {
+          "text": "Pinahintulutan ang pagsulat sa pader",
+          "tama": false
+        },
+        {
+          "text": "Walang pahintulot, sinira ang bagong pinta",
+          "tama": true
+        }
+      ],
+      "resulta": {
+        "tapat": "Ang totoo, walang pahintulot na ginawa ang pagsulat sa pader, at may nasirang ari-arian ng barangay.",
+        "tamang_landas": "Sa ilalim ng RA 9344, maaaring dumaan sa intervention o diversion kasama ang pagsasaayos o pagbabayad-pinsala (restitution) bilang bahagi ng pagtuturo ng responsibilidad.",
+        "tandaan": "Ang pag-aalay ng oras para ayusin ang nasira ay mas mabuting hakbang kaysa parusa lamang."
+      },
+      "aral": "Ang pagmamahal sa kaibigan ay hindi dapat ipakita sa pamamagitan ng pagsira ng ari-arian ng iba.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba ang ginawang pagsulat sa pader?",
+          "sagot": "Ngayon ko lang po nalaman, nahihiya po ako, tutulungan ko po siyang ayusin ito."
+        },
+        {
+          "tanong": "Ano po ang gagawin niyo bilang magulang?",
+          "sagot": "Sasamahan ko po siyang humingi ng paumanhin at tutulungan siyang bayaran ang gastos sa muling pagpinta."
+        }
+      ]
+    },
+    {
+      "id": "droga",
+      "type": "krimen",
+      "status": "ready",
+      "title": "Ang Padalang Pakete",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "kabado",
+        "art": "bata05"
+      },
+      "caseno": "K-04",
+      "intro": "Kumusta po. Pinapadala lang po ako ng kapitbahay ko ng maliit na pakete, hindi ko po alam kung ano ang laman.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng barangay tanod",
+          "text": "Nahuli ang bata na may dalang maliit na pakete na kinumpirma ng mga awtoridad bilang ipinagbabawal na sangkap."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Alam mo ba kung ano talaga ang laman ng pakete?",
+          "sagot": "Medyo po may hinala ako, pero hindi ko po tinanong para hindi na po lumala pa.",
+          "mood": "kabado"
+        },
+        {
+          "q": "Ilang beses ka na bang ginawa ito?",
+          "sagot": "Ito lang po talaga ang una, pangako po.",
+          "mood": "malungkot"
+        }
+      ],
+      "tama_desisyon": "inspect",
+      "pagbasa": [
+        {
+          "text": "Ganap na hindi alam ang laman ng pakete",
+          "tama": false
+        },
+        {
+          "text": "May hinala sa ipinagbabawal na sangkap pero itinuloy pa rin",
+          "tama": true
+        }
+      ],
+      "resulta": {
+        "tapat": "May bahagyang hinala ang bata sa laman ng pakete ngunit itinuloy pa rin ang paghahatid nito.",
+        "tamang_landas": "Sa ilalim ng RA 9344 kaugnay ng batas laban sa ipinagbabawal na gamot, bibigyang-pansin ang kapakanan ng bata bilang posibleng biktima ng paggamit ng mga nakatatanda; kailangan ng agarang intervention at proteksyon, hindi lamang parusa.",
+        "tandaan": "Kadalasan, ginagamit lang ng mga nakatatanda ang mga bata para sa mapanganib na gawain. Mahalagang protektahan sila."
+      },
+      "aral": "Kapag may hinala ka sa isang bagay, mas ligtas na tumanggi at magsabi sa isang responsableng matanda.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba ang tungkol sa pakete?",
+          "sagot": "Hindi ko po alam, pero magmula ngayon, babantayan ko po siya nang mabuti at kakausapin ang mga kapitbahay."
+        },
+        {
+          "tanong": "Sino po ang kapitbahay na nagpadala?",
+          "sagot": "Ibibigay ko po ang impormasyon sa barangay para masuri ito nang maayos."
+        }
+      ]
+    },
+    {
+      "id": "inuman",
+      "type": "krimen",
+      "status": "ready",
+      "title": "Ang Inuman sa Plaza",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "kabado",
+        "art": "bata06"
+      },
+      "caseno": "K-05",
+      "intro": "Kumusta po. Kasama lang po ako ng mga kuya sa plaza, hindi po ako uminom, nanonood lang po ako.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng tanod",
+          "text": "Nakita kong kasama ang bata sa grupong umiinom sa plaza nang gabing iyon, may hawak siyang baso."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Bakit ka nandun sa plaza nang gabing iyon?",
+          "sagot": "Sumama lang po ako sa mga kuya, gusto ko lang po makisama.",
+          "mood": "kabado"
+        },
+        {
+          "q": "Talaga bang hindi ka uminom?",
+          "sagot": "Konti lang po talaga, hindi ko na po naulit.",
+          "mood": "malungkot"
+        }
+      ],
+      "tama_desisyon": "inspect",
+      "pagbasa": [
+        {
+          "text": "Hindi lumahok, nanonood lamang",
+          "tama": false
+        },
+        {
+          "text": "Lumahok sa pag-inom kahit menor de edad",
+          "tama": true
+        }
+      ],
+      "resulta": {
+        "tapat": "Totoong lumahok ang bata sa pag-inom kahit menor de edad pa, hindi lang basta nanonood.",
+        "tamang_landas": "Bukod sa RA 9344, may kaugnayan din ito sa batas laban sa pag-inom ng menor de edad; kailangan ng intervention na tututok sa epekto ng peer pressure at kalusugan ng bata.",
+        "tandaan": "Mahalagang maunawaan kung bakit sumama ang bata sa grupo, para matulungan siyang pumili ng mas mabuting kasama."
+      },
+      "aral": "Ang pakikisama sa grupo ay hindi dapat hahantong sa paggawa ng bagay na alam mong mali.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba na kasama siya sa inuman?",
+          "sagot": "Hindi ko po alam, nag-aalala po ako dahil bago lang siyang nakikisama sa grupong iyon."
+        },
+        {
+          "tanong": "May balak po ba kayong gawin?",
+          "sagot": "Pagbabawalan ko na po siyang makisama doon at babantayan ko na po ang oras niya sa labas."
+        }
+      ]
+    },
+    {
+      "id": "cyberbully",
+      "type": "krimen",
+      "status": "ready",
+      "title": "Ang Nakakahiyang Post",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "kabado",
+        "art": "bata07"
+      },
+      "caseno": "K-06",
+      "intro": "Kumusta po. Nagbiro lang po ako sa kaklase ko online, hindi ko po alam na masasaktan siya.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng magulang ng biktima",
+          "text": "Nag-post ang bata ng nakakahiyang larawan ng anak ko kasama ang mga nanlalait na komento."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Bakit mo ipinost ang larawan niya?",
+          "sagot": "Akala ko po nakakatawa lang, hindi ko po inisip na masasaktan siya.",
+          "mood": "kabado"
+        },
+        {
+          "q": "Alam mo ba kung ilang tao ang nakakita?",
+          "sagot": "Marami po pala, hindi ko po alam na kumalat pa.",
+          "mood": "malungkot"
+        }
+      ],
+      "tama_desisyon": "inspect",
+      "pagbasa": [
+        {
+          "text": "Simpleng biro lamang na walang epekto",
+          "tama": false
+        },
+        {
+          "text": "Nakasakit at nakahiya sa kapwa bata online",
+          "tama": true
+        }
+      ],
+      "resulta": {
+        "tapat": "Ang totoo, hindi lamang biro ang naging epekto; nasaktan at nahiya ang kapwa bata dahil kumalat ang post.",
+        "tamang_landas": "Sa ilalim ng RA 9344, kasama ang Anti-Bullying Act at Cybercrime Prevention Act, maaaring dumaan sa intervention na nakatuon sa pag-unawa sa epekto ng cyberbullying at pagpapaunlad ng respeto sa kapwa.",
+        "tandaan": "Ang online space ay totoong lugar din kung saan maaaring masaktan ang damdamin ng iba."
+      },
+      "aral": "Bago mag-post ng tungkol sa iba, isipin muna kung paano ito madarama ng taong kinauukulan.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba ang tungkol sa post?",
+          "sagot": "Nalaman ko lang po nang tawagan ako ng magulang ng kaklase niya, nahihiya po ako."
+        },
+        {
+          "tanong": "Ano ang gagawin niyo?",
+          "sagot": "Kakausapin ko po siya tungkol sa responsableng paggamit ng internet at hihilingin naming mag-sorry."
+        }
+      ]
+    },
+    {
+      "id": "armas",
+      "type": "krimen",
+      "status": "ready",
+      "title": "Ang Dalang Patalim",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "kabado",
+        "art": "bata08"
+      },
+      "caseno": "K-07",
+      "intro": "Kumusta po. Dala ko lang po ang kutsilyo dahil natatakot po ako sa mga bully sa amin, hindi ko po balak gamitin.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng guro",
+          "text": "Nakita ang bata na may dalang patalim sa loob ng bag habang nasa paaralan."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Bakit mo dinala ang patalim?",
+          "sagot": "Natatakot po ako, gusto ko lang po pang-proteksyon.",
+          "mood": "kabado"
+        },
+        {
+          "q": "May balak ka bang gamitin ito laban sa iba?",
+          "sagot": "Hindi po talaga, natatakot lang po ako.",
+          "mood": "malungkot"
+        }
+      ],
+      "tama_desisyon": "inspect",
+      "pagbasa": [
+        {
+          "text": "Walang panganib dahil hindi naman ginamit",
+          "tama": false
+        },
+        {
+          "text": "Mapanganib pa rin kahit hindi ginamit, may batas na nilalabag",
+          "tama": true
+        }
+      ],
+      "resulta": {
+        "tapat": "Kahit hindi ginamit, mapanganib pa rin ang pagdadala ng patalim sa paaralan at may nilalabag na patakaran.",
+        "tamang_landas": "Sa ilalim ng RA 9344, bibigyang-diin ang dahilan ng takot ng bata (posibleng bullying); kailangan ng intervention na tututukan ang parehong seguridad at ang ugat ng problema.",
+        "tandaan": "Ang takot sa bullying ay dapat iulat sa guro o magulang, hindi lutasin sa pamamagitan ng pagdadala ng armas."
+      },
+      "aral": "May mas ligtas na paraan para protektahan ang sarili kaysa magdala ng mapanganib na bagay.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba na may dala siyang patalim?",
+          "sagot": "Hindi ko po alam, pero alam kong may kinatatakutan siya sa eskwela, hindi lang niya sinasabi."
+        },
+        {
+          "tanong": "May balak po ba kayong gawin?",
+          "sagot": "Kakausapin ko po siya at sasamahan ko siyang magsumbong sa guro tungkol sa bullying."
+        }
+      ]
+    },
+    {
+      "id": "sugal",
+      "type": "krimen",
+      "status": "ready",
+      "title": "Ang Online na Taya",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "kabado",
+        "art": "bata09"
+      },
+      "caseno": "K-08",
+      "intro": "Kumusta po. Naglaro lang po ako ng online game, hindi ko po alam na may pustahan pala.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng magulang",
+          "text": "Nalaman kong gumagastos ang bata ng pera para sa online betting gamit ang gamit na cellphone."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Alam mo ba na may pera ang nakataya?",
+          "sagot": "Medyo po, pero gusto ko lang po subukan, akala ko po libre lang.",
+          "mood": "kabado"
+        },
+        {
+          "q": "Saan mo nakuha ang pera na ginamit?",
+          "sagot": "Sa baon ko po, ipon-ipon ko po.",
+          "mood": "malungkot"
+        }
+      ],
+      "tama_desisyon": "inspect",
+      "pagbasa": [
+        {
+          "text": "Ganap na hindi alam na may pustahan",
+          "tama": false
+        },
+        {
+          "text": "May kaalaman sa pustahan pero itinuloy pa rin",
+          "tama": true
+        }
+      ],
+      "resulta": {
+        "tapat": "May kaalaman ang bata na may kinapapalooban ng pera ang laro ngunit itinuloy pa rin ito.",
+        "tamang_landas": "Sa ilalim ng RA 9344, kailangan ng intervention na nakatuon sa pag-unawa sa panganib ng online gambling sa mga menor de edad.",
+        "tandaan": "Ang online gambling ay bawal para sa mga menor de edad at may seryosong epekto sa pananalapi at pag-uugali."
+      },
+      "aral": "Hindi lahat ng online na laro ay ligtas; mag-ingat sa mga naglalamang pustahan.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba ang tungkol sa online betting?",
+          "sagot": "Hindi ko po alam, nagulat po ako nang malaman, babawiin ko na po ang access niya sa cellphone."
+        },
+        {
+          "tanong": "Ano po ang gagawin niyo?",
+          "sagot": "Kakausapin ko po siya tungkol sa panganib nito at bibigyan ko po siya ng ibang gawain sa oras niya."
+        }
+      ]
+    },
+    {
+      "id": "rambol",
+      "type": "krimen",
+      "status": "ready",
+      "title": "Ang Sabwatan sa Labas",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "kabado",
+        "art": "bata10"
+      },
+      "caseno": "K-09",
+      "intro": "Kumusta po. Sumama lang po ako sa mga kaibigan ko, hindi ko po alam na may planong magkagulo.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng saksi",
+          "text": "Nakita kong sumama ang bata sa grupong nagplano ng rambol laban sa ibang grupo ng kabataan."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Alam mo ba ang plano ng grupo bago kayo lumabas?",
+          "sagot": "May narinig po ako, pero hindi ko po inakalang totoo pala.",
+          "mood": "kabado"
+        },
+        {
+          "q": "Bakit ka pa sumama kung alam mong may plano?",
+          "sagot": "Natakot po akong iwanan, gusto ko lang po makisama.",
+          "mood": "malungkot"
+        }
+      ],
+      "tama_desisyon": "inspect",
+      "pagbasa": [
+        {
+          "text": "Ganap na walang kaalaman sa plano",
+          "tama": false
+        },
+        {
+          "text": "May narinig na balak pero sumama pa rin",
+          "tama": true
+        }
+      ],
+      "resulta": {
+        "tapat": "May narinig ang bata tungkol sa balak na rambol ngunit sumama pa rin dahil sa takot na maiwan sa grupo.",
+        "tamang_landas": "Sa ilalim ng RA 9344, susuriin ang antas ng partisipasyon at discernment ng bata; kailangan ng intervention na tututukan ang epekto ng peer pressure at group violence.",
+        "tandaan": "Ang tunay na kaibigan ay hindi nanghihikayat sa mapanganib at maling gawain."
+      },
+      "aral": "Mas mahalaga ang kaligtasan kaysa sa takot na maiwan sa grupo.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba ang tungkol sa rambol?",
+          "sagot": "Hindi ko po alam, nag-aalala po ako dahil bago lang siya sa grupong iyon."
+        },
+        {
+          "tanong": "Ano po ang balak niyong gawin?",
+          "sagot": "Ilalayo ko po siya sa grupong iyon at babantayan ko na po siya nang mas mabuti."
+        }
+      ]
+    },
+    {
+      "id": "holdap",
+      "type": "krimen",
+      "status": "ready",
+      "title": "Ang Sapilitang Pagkuha",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "kabado",
+        "art": "bata01"
+      },
+      "caseno": "K-10",
+      "intro": "Kumusta po. Hiningi ko lang po ang cellphone niya, hindi ko naman po pinilit, pinahiram lang naman niya.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng biktima",
+          "text": "Tinakot ako at pinilit kunin ang aking cellphone, sinabihan pa akong huwag magsumbong."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Bakit ka natatakot sabihin ang totoo?",
+          "sagot": "Natatakot po ako mapagalitan, kaya nagsabi po ako ng ibang bersyon.",
+          "mood": "kabado"
+        },
+        {
+          "q": "Tinakot mo ba talaga siya?",
+          "sagot": "Opo, sinabihan ko po siyang huwag magsumbong.",
+          "mood": "malungkot"
+        }
+      ],
+      "tama_desisyon": "inspect",
+      "pagbasa": [
+        {
+          "text": "Kusang-loob na pinahiram ang cellphone",
+          "tama": false
+        },
+        {
+          "text": "Pinilit at tinakot kunin ang cellphone",
+          "tama": true
+        }
+      ],
+      "resulta": {
+        "tapat": "Ang totoo, pinilit at tinakot ng bata ang biktima para makuha ang cellphone nito, hindi ito boluntaryong pagpapahiram.",
+        "tamang_landas": "Sa ilalim ng RA 9344, ito ay seryosong bagay na maaaring dumaan sa diversion kasama ang mahigpit na pagsubaybay; layunin ay ituwid ang pag-uugali bago pa lumala.",
+        "tandaan": "Ang pananakot sa kapwa bata para makakuha ng gamit ay malubhang paglabag sa karapatan ng iba."
+      },
+      "aral": "Ang pananakot ay hindi kailanman katanggap-tanggap na paraan para makakuha ng anumang bagay.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba ang ginawa niyang pananakot?",
+          "sagot": "Hindi ko po alam, sobrang nakakabahala po ito, hindi ko akalaing kaya niya gawin iyon."
+        },
+        {
+          "tanong": "Ano po ang gagawin niyo bilang magulang?",
+          "sagot": "Kakausapin ko po siya nang mabuti at sasamahan ko siyang humingi ng tawad at isauli ang gamit."
+        }
+      ]
+    },
+    {
+      "id": "tumulong",
+      "type": "mabuti",
+      "status": "ready",
+      "title": "Ang Tumulong sa Nasugatan",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "neutral",
+        "art": "bata02"
+      },
+      "caseno": "M-02",
+      "intro": "Kumusta po. May nakita po akong nahulog na bata sa daan, tinulungan ko po siya at dinala sa clinic.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng nars",
+          "text": "Dinala ng bata ang nasugatang bata sa klinika at naghintay hanggang dumating ang magulang nito."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Bakit mo siya tinulungan?",
+          "sagot": "Kasi po nakita ko siyang nahihirapan, hindi ko po kayang hindi tumulong.",
+          "mood": "neutral"
+        },
+        {
+          "q": "May inaasahan ka bang kapalit?",
+          "sagot": "Wala po, gusto ko lang po talaga siyang matulungan.",
+          "mood": "ginhawa"
+        }
+      ],
+      "tama_desisyon": "clear",
+      "resulta": {
+        "tapat": "Totoo ang kuwento; tinulungan ng bata ang nasugatan nang walang inaasahang kapalit.",
+        "tamang_landas": "Ang ganitong pagkilos ay dapat purihin at gawing halimbawa sa ibang kabataan.",
+        "tandaan": "Ang pagtulong sa kapwa nang walang pag-aalinlangan ay tanda ng mabuting puso."
+      },
+      "aral": "Ang tunay na kabaitan ay ginagawa kahit walang nakatingin o naghihintay ng papuri.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba ang tungkol sa pagtulong niya?",
+          "sagot": "Opo, ipinagmamalaki ko po siya, palagi po siyang may malasakit sa kapwa."
+        },
+        {
+          "tanong": "Palagi ba siyang ganito?",
+          "sagot": "Opo, mula pagkabata pa lang, laging handang tumulong."
+        }
+      ]
+    },
+    {
+      "id": "nagsabi",
+      "type": "mabuti",
+      "status": "ready",
+      "title": "Ang Nagsabi ng Totoo",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "neutral",
+        "art": "bata03"
+      },
+      "caseno": "M-03",
+      "intro": "Kumusta po. Ako po ang nakabasag ng bintana ng paaralan, sinabi ko po agad sa guro kahit walang nakakita.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng guro",
+          "text": "Kusang-loob na inamin ng bata ang nangyari kahit walang nakasaksi sa insidente."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Bakit mo inamin kahit walang nakakita?",
+          "sagot": "Kasi po alam kong mali kung magsisinungaling ako, mas mabuti pong sabihin ang totoo.",
+          "mood": "neutral"
+        },
+        {
+          "q": "Natakot ka bang aminin?",
+          "sagot": "Opo, pero mas natakot po ako kung hindi ko sasabihin.",
+          "mood": "ginhawa"
+        }
+      ],
+      "tama_desisyon": "clear",
+      "resulta": {
+        "tapat": "Totoo ang kuwento; kusang-loob na inamin ng bata ang pagkakamali kahit walang nakasaksi.",
+        "tamang_landas": "Ang katapatang ito ay dapat gantimpalaan sa halip na parusahan nang mabigat; maaaring humingi ng tulong sa pagsasaayos bilang bahagi ng pagtuturo ng pananagutan.",
+        "tandaan": "Ang pag-amin sa pagkakamali ay unang hakbang sa pagiging responsable."
+      },
+      "aral": "Mas magaan ang loob kapag sinabi mo ang totoo, kahit mahirap ito.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba na inamin niya ang nabasag na bintana?",
+          "sagot": "Opo, sinabi niya po agad sa akin, ipinagmamalaki ko po ang katapatan niya."
+        },
+        {
+          "tanong": "Ano ang ginawa niyo bilang magulang?",
+          "sagot": "Tinulungan ko po siyang magbayad-pinsala bilang pagtuturo ng responsibilidad."
+        }
+      ]
+    },
+    {
+      "id": "tumanggi",
+      "type": "mabuti",
+      "status": "ready",
+      "title": "Ang Tumanggi sa Barkada",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "neutral",
+        "art": "bata04"
+      },
+      "caseno": "M-04",
+      "intro": "Kumusta po. Inanyayahan po ako ng mga kaibigan kong sumama sa pag-inom, pero tumanggi po ako at umuwi na lang.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng kapitbahay",
+          "text": "Nakita kong tumanggi ang bata sa alok ng mga kaibigan at deretsong umuwi sa bahay nila."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Bakit ka tumanggi?",
+          "sagot": "Kasi po alam kong mali at bawal pa po ako, natakot din po akong malaman ng magulang ko.",
+          "mood": "neutral"
+        },
+        {
+          "q": "Nahirapan ka bang tumanggi sa kaibigan?",
+          "sagot": "Medyo po, pero mas mabuti pong tumanggi kaysa magsisi.",
+          "mood": "ginhawa"
+        }
+      ],
+      "tama_desisyon": "clear",
+      "resulta": {
+        "tapat": "Totoo ang kuwento; tumanggi ang bata sa alok at pinili ang tamang desisyon.",
+        "tamang_landas": "Ang ganitong lakas ng loob na tumanggi sa maling impluwensya ay dapat purihin at gawing inspirasyon sa ibang kabataan.",
+        "tandaan": "Ang tunay na lakas ay makitang tumanggi sa mali kahit mahirap."
+      },
+      "aral": "Hindi lahat ng anyaya ng kaibigan ay dapat sundin, lalo na kung alam mong mali ito.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba na tinanggihan niya ang alok ng barkada?",
+          "sagot": "Opo, sinabi niya po sa akin agad, sobrang proud po ako sa kanya."
+        },
+        {
+          "tanong": "Ano ang sinabi niyo sa kanya?",
+          "sagot": "Pinuri ko po siya at pinaalalahanan kong laging gawin ang tama kahit mahirap."
+        }
+      ]
+    },
+    {
+      "id": "sukli",
+      "type": "mabuti",
+      "status": "ready",
+      "title": "Ang Isinauling Sukli",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "neutral",
+        "art": "bata05"
+      },
+      "caseno": "M-05",
+      "intro": "Kumusta po. Nabigyan po ako ng sobrang sukli sa tindahan, ibinalik ko po agad sa tindera.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng tindera",
+          "text": "Ibinalik ng bata ang sobrang sukli kahit hindi ko na napansin ang pagkakamali ko."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Bakit mo ibinalik ang sukli?",
+          "sagot": "Kasi po hindi po akin iyon, mali pong panatilihin ko ang hindi ko pinaghirapan.",
+          "mood": "neutral"
+        },
+        {
+          "q": "Naisip mo bang panatilihin na lang?",
+          "sagot": "Sandali lang po, pero naisip ko pong mali iyon.",
+          "mood": "ginhawa"
+        }
+      ],
+      "tama_desisyon": "clear",
+      "resulta": {
+        "tapat": "Totoo ang kuwento; ibinalik ng bata ang sobrang sukli kahit walang nakakaalam.",
+        "tamang_landas": "Ang ganitong katapatan sa maliliit na bagay ay dapat purihin, ito ang pundasyon ng magandang pagkatao.",
+        "tandaan": "Ang katapatan sa maliit na bagay ay senyales ng katapatan sa malaking bagay."
+      },
+      "aral": "Ang tunay na katapatan ay ipinapakita kahit sa pinakamaliit na sitwasyon.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba na ibinalik niya ang sukli?",
+          "sagot": "Opo, sinabi niya po agad sa akin, laging ganyan ang turo namin sa kanya."
+        },
+        {
+          "tanong": "Palagi ba siyang ganito?",
+          "sagot": "Opo, mula pagkabata, tinuturuan namin siyang maging matapat."
+        }
+      ]
+    },
+    {
+      "id": "nagreport",
+      "type": "mabuti",
+      "status": "ready",
+      "title": "Ang Nag-report ng Bully",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "neutral",
+        "art": "bata06"
+      },
+      "caseno": "M-06",
+      "intro": "Kumusta po. Nakita ko pong may binu-bully sa eskwelahan, sinabi ko po agad sa guro kahit natatakot po ako.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng guro",
+          "text": "Sinabi ng bata ang insidente ng bullying kahit alam niyang maaari siyang katakutan ng mga kasangkot."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Bakit mo pinili sabihin sa guro?",
+          "sagot": "Kasi po alam kong hindi tama ang ginagawa nila sa kaklase namin.",
+          "mood": "kabado"
+        },
+        {
+          "q": "Natakot ka bang gawin iyon?",
+          "sagot": "Opo, pero mas natakot po ako kung hindi ako tutulong.",
+          "mood": "ginhawa"
+        }
+      ],
+      "tama_desisyon": "clear",
+      "resulta": {
+        "tapat": "Totoo ang kuwento; iniulat ng bata ang bullying kahit natatakot, dahil gusto niyang tumulong sa kaklase.",
+        "tamang_landas": "Ang pag-uulat ng bullying ay mahalagang bahagi ng Anti-Bullying Act at dapat hikayatin sa lahat ng mag-aaral.",
+        "tandaan": "Ang pagsasabi ng totoo laban sa maling gawain ay isang uri ng katapangan."
+      },
+      "aral": "Ang pananahimik sa harap ng kawalang-katarungan ay hindi tumutulong; ang pagsasalita ang nagliligtas.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba na nagsumbong siya tungkol sa bullying?",
+          "sagot": "Opo, ipinagmalaki niya po sa akin, tuwang-tuwa po ako sa ginawa niya."
+        },
+        {
+          "tanong": "Nag-aalala ba kayo sa kanya?",
+          "sagot": "Medyo po, pero sinabihan ko siyang mabuti ang ginawa niya at susuportahan namin siya."
+        }
+      ]
+    },
+    {
+      "id": "matanda",
+      "type": "mabuti",
+      "status": "ready",
+      "title": "Ang Tumulong sa Matanda",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "neutral",
+        "art": "bata07"
+      },
+      "caseno": "M-07",
+      "intro": "Kumusta po. May nakita po akong matandang naliligaw, sinamahan ko po siya hanggang sa bahay nila.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng lolo",
+          "text": "Sinamahan ako ng bata pauwi nang ako'y naliligaw, hindi siya umalis hanggang ligtas ako sa bahay."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Bakit mo siya sinamahan?",
+          "sagot": "Kasi po nahabag po ako, mag-isa lang po siya at hindi alam ang daan.",
+          "mood": "neutral"
+        },
+        {
+          "q": "Natakot ka bang samahan ang di mo kilala?",
+          "sagot": "Konti po, pero naisip ko pong kailangan niya ng tulong.",
+          "mood": "ginhawa"
+        }
+      ],
+      "tama_desisyon": "clear",
+      "resulta": {
+        "tapat": "Totoo ang kuwento; sinamahan ng bata ang naliligaw na matanda hanggang makauwi ito nang ligtas.",
+        "tamang_landas": "Ang ganitong malasakit sa mga nakatatanda ay dapat hikayatin at gawing halimbawa ng respeto sa nakatatanda.",
+        "tandaan": "Ang pagtulong sa mga nangangailangan, lalo na sa mga matatanda, ay bahagi ng magandang asal."
+      },
+      "aral": "Ang maliit na tulong ay maaaring malaking bagay para sa taong nangangailangan nito.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba na tinulungan niya ang matandang naliligaw?",
+          "sagot": "Opo, sinabi niya po sa amin, sobrang proud po kami sa kanya."
+        },
+        {
+          "tanong": "Palagi ba siyang ganito?",
+          "sagot": "Opo, laging may malasakit sa mga nakatatanda, itinuro namin sa kanya iyon."
+        }
+      ]
+    },
+    {
+      "id": "nag-aral",
+      "type": "mabuti",
+      "status": "ready",
+      "title": "Ang Pinili ang Pag-aaral",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "neutral",
+        "art": "bata08"
+      },
+      "caseno": "M-08",
+      "intro": "Kumusta po. Inanyayahan po ako ng mga kaibigan na mag-skip ng klase, pero pumasok pa rin po ako.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng guro",
+          "text": "Palaging dumadalo ang bata sa klase kahit alam niyang madalas siyang inaanyayahang mag-skip ng mga kaibigan."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Bakit mo pinili pumasok?",
+          "sagot": "Kasi po mahalaga po sa akin ang pag-aaral, gusto ko pong matapos.",
+          "mood": "neutral"
+        },
+        {
+          "q": "Hindi ka ba na-preprisyon ng kaibigan?",
+          "sagot": "Medyo po, pero alam ko pong mas importante ang eskwela.",
+          "mood": "ginhawa"
+        }
+      ],
+      "tama_desisyon": "clear",
+      "resulta": {
+        "tapat": "Totoo ang kuwento; pinili ng bata ang pag-aaral kahit inaanyayahan siyang mag-skip ng mga kaibigan.",
+        "tamang_landas": "Ang ganitong disiplina at pagpapahalaga sa edukasyon ay dapat purihin at gawing modelo sa ibang kabataan.",
+        "tandaan": "Ang paglaban sa peer pressure para sa sariling kinabukasan ay tanda ng katatagan."
+      },
+      "aral": "Ang pagpili ng tama, kahit hindi ito ang mas madali, ay laging nagbubunga ng kabutihan.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba na madalas siyang inaanyayahang mag-skip?",
+          "sagot": "Medyo po, pero alam kong laging pumapasok siya, mapagkakatiwalaan po siya."
+        },
+        {
+          "tanong": "Ano ang ginagawa niyo para suportahan siya?",
+          "sagot": "Sinusuportahan ko po siya sa pag-aaral at pinapaalalahanang mahalaga ang kinabukasan niya."
+        }
+      ]
+    },
+    {
+      "id": "hayop",
+      "type": "mabuti",
+      "status": "ready",
+      "title": "Ang Nagligtas ng Hayop",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "neutral",
+        "art": "bata09"
+      },
+      "caseno": "M-09",
+      "intro": "Kumusta po. May nakita po akong asong nasaktan sa kalye, dinala ko po ito sa aming bahay at inalagaan.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng kapitbahay",
+          "text": "Nakita kong dinala ng bata ang nasugatang aso at inalagaan ito hanggang gumaling."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Bakit mo inalagaan ang aso?",
+          "sagot": "Kasi po naawa po ako, wala pong ibang tumulong sa kanya.",
+          "mood": "neutral"
+        },
+        {
+          "q": "Nahirapan ka ba sa pag-aalaga?",
+          "sagot": "Medyo po, pero masaya po akong nakatulong.",
+          "mood": "ginhawa"
+        }
+      ],
+      "tama_desisyon": "clear",
+      "resulta": {
+        "tapat": "Totoo ang kuwento; inalagaan ng bata ang nasugatang aso hanggang gumaling ito.",
+        "tamang_landas": "Ang pagmamalasakit sa hayop ay dapat hikayatin bilang bahagi ng pagtuturo ng kabaitan at responsibilidad.",
+        "tandaan": "Ang malasakit sa lahat ng nilalang, malaki man o maliit, ay tanda ng mabuting puso."
+      },
+      "aral": "Ang kabaitan ay hindi lamang para sa tao; ipinapakita rin ito sa pag-aalaga sa mga hayop.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba ang tungkol sa asong inalagaan niya?",
+          "sagot": "Opo, tinulungan ko rin po siya, mahilig talaga siya sa mga hayop."
+        },
+        {
+          "tanong": "Suportado niyo ba ang ginawa niya?",
+          "sagot": "Opo, buong-buo, tinuturuan din namin siyang maging responsable sa pag-aalaga."
+        }
+      ]
+    },
+    {
+      "id": "sumbong",
+      "type": "mabuti",
+      "status": "ready",
+      "title": "Ang Nagpaalam sa Nakita",
+      "bata": {
+        "label": "Bata",
+        "mood_start": "neutral",
+        "art": "bata10"
+      },
+      "caseno": "M-10",
+      "intro": "Kumusta po. Nakakita po ako ng bag na naiwan sa jeep, ibinigay ko po agad sa driver at sinabi kung kanino ito.",
+      "ebidensya": [
+        {
+          "label": "Testimonya ng drayber",
+          "text": "Ibinigay sa akin ng bata ang naiwang bag at sinabing sa isang pasahero ito, hindi man lang ito binuksan."
+        }
+      ],
+      "tanong": [
+        {
+          "q": "Bakit mo ibinigay agad ang bag?",
+          "sagot": "Kasi po baka kailangang-kailangan ng may-ari, mas mabuti pong ibalik agad.",
+          "mood": "neutral"
+        },
+        {
+          "q": "Binuksan mo ba ang bag?",
+          "sagot": "Hindi po, hindi po akin iyon kaya hindi ko po hinawakan ang laman.",
+          "mood": "ginhawa"
+        }
+      ],
+      "tama_desisyon": "clear",
+      "resulta": {
+        "tapat": "Totoo ang kuwento; ibinigay agad ng bata ang naiwang bag nang hindi ito binuksan o kinuha ang laman.",
+        "tamang_landas": "Ang ganitong katapatan sa pagbabalik ng nakitang gamit ay dapat purihin at gawing halimbawa.",
+        "tandaan": "Ang paggalang sa pag-aari ng iba, kahit walang nakatingin, ay tanda ng tunay na katapatan."
+      },
+      "aral": "Ang mabuting gawa ay hindi na nangangailangan pa ng malaking sakripisyo, minsan simpleng desisyon lang ito.",
+      "tawag_magulang": [
+        {
+          "tanong": "Alam niyo po ba ang tungkol sa nakitang bag?",
+          "sagot": "Opo, sinabi niya po sa akin, palagi po siyang matulungin at matapat."
+        },
+        {
+          "tanong": "Palagi ba siyang ganito?",
+          "sagot": "Opo, itinuro namin sa kanya mula pagkabata na ibalik ang anumang hindi kanya."
+        }
+      ]
+    }
+  ]
+}

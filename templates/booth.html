@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laro - Kaalaman at Karapatan</title>
+  <link rel="icon" type="image/png" href="/static/art/logo.png">
+  <link rel="stylesheet" href="/static/style.css?v=5">
+</head>
+<body class="booth-body booth-body--full">
+  <div class="booth booth--full">
+    <div class="scene-full">
+      <div class="scene-bg"></div>
+
+      <button class="booth-exit booth-exit--float" onclick="location.href='/menu'"><span data-tl="&lsaquo; Umalis" data-en="&lsaquo; Exit">&lsaquo; Umalis</span></button>
+
+      <div class="booth-hud booth-hud--float">
+        <div class="booth-meta"><span id="progress">Kaso 0 ng 0</span> &middot; <span id="score">Puntos: 0</span></div>
+        <div class="lang-toggle booth-lang">
+          <button class="lang" id="lang-tl" type="button" data-lang-btn="tl">TL</button>
+          <button class="lang" id="lang-en" type="button" data-lang-btn="en">EN</button>
+        </div>
+      </div>
+
+      <div id="char-stage" class="char-stage">
+        <div id="character" class="character"></div>
+      </div>
+
+      <img class="scene-fg" src="/static/art/fg_wooden_desk.png" alt="">
+
+      <div class="scene-bottom">
+        <div id="dialogue" class="subtitle"></div>
+        <div class="booth-actions scene-actions" id="controls"></div>
+      </div>
+
+      <img class="folder-prop" id="folder-btn" src="/static/art/folder_closed.png" alt="Mga dokumento ng kaso"
+        data-tl-title="Mga dokumento ng kaso" data-en-title="Case documents" title="Mga dokumento ng kaso">
+
+      <img class="phone-prop" id="phone-btn" src="/static/art/phone_attached.png" alt="Tumawag sa magulang"
+        data-tl-title="Tumawag sa magulang" data-en-title="Call the parent" title="Tumawag sa magulang">
+    </div>
+  </div>
+
+  <!-- Panel ng mga dokumento ng kaso: bumubukas na folder sa gitna ng screen -->
+  <div id="docs-panel" class="folder-overlay hidden">
+    <div class="folder-sheet">
+      <img class="folder-open-img" src="/static/art/folder_open.png" alt="">
+      <button class="panel-close panel-close--folder" id="docs-close">&times;</button>
+      <div class="folder-content">
+        <div class="case-card"><div class="case-no" id="case-no">--</div><div class="case-label">KASO</div></div>
+        <div class="statement-paper" id="statement">Salaysay ng bata...</div>
+        <div class="law-card"><b>RA 9344 gabay:</b> 15 pababa: intervention. 16-17 na may discernment: diversion. Layunin: tulong, hindi parusa.</div>
+        <div class="side-label">EBIDENSYA</div>
+        <div id="evidence-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Panel ng tawag sa magulang: naka-angat na telepono sa gitna ng screen -->
+  <div id="call-panel" class="phone-overlay hidden">
+    <div class="phone-sheet">
+      <button class="panel-close panel-close--phone" id="call-close">&times;</button>
+      <img class="phone-detached-img" src="/static/art/phone_detached.png" alt="">
+      <div id="call-dialogue" class="phone-subtitle">Tumatawag...</div>
+      <div id="call-controls" class="phone-controls"></div>
+    </div>
+  </div>
+
+  <div id="modal" class="overlay">
+    <div class="modal-card lang-fade" id="modal-card">
+      <h2 data-tl="Paano Maglaro" data-en="How to Play">Paano Maglaro</h2>
+      <ol class="instr-list">
+        <li data-tl="Dumarating ang mga bata sa iyong desk, may dalang kuwento at dokumento." data-en="Children come to your desk, bringing their story and documents.">Dumarating ang mga bata sa iyong desk, may dalang kuwento at dokumento.</li>
+        <li data-tl="Makinig at magtanong. Pansinin kung tugma ang magagandang salita sa ebidensya." data-en="Listen and ask questions. Notice whether their words match the evidence.">Makinig at magtanong. Pansinin kung tugma ang magagandang salita sa ebidensya.</li>
+        <li data-tl-html="Buksan ang <b>folder icon</b> para makita ang mga dokumento, at ang <b>telepono</b> para tumawag sa magulang ng bata." data-en-html="Open the <b>folder icon</b> to see the documents, and the <b>phone</b> to call the child's parent.">Buksan ang <b>folder icon</b> para makita ang mga dokumento, at ang <b>telepono</b> para tumawag sa magulang ng bata.</li>
+        <li data-tl-html="Piliin ang <b>Nagsasabi ng Totoo</b> kung malinaw at tugma sa ebidensya, o <b>Hindi Tugma ang Kwento</b> kung may tinatago." data-en-html="Choose <b>Nagsasabi ng Totoo</b> (Telling the Truth) if it's clear and matches the evidence, or <b>Hindi Tugma ang Kwento</b> (Story Doesn't Match) if something's being hidden.">Piliin ang <b>Nagsasabi ng Totoo</b> kung malinaw at tugma sa ebidensya, o <b>Hindi Tugma ang Kwento</b> kung may tinatago.</li>
+        <li data-tl="Kung may mali, gagabayan mo ang bata sa tamang landas, hindi para husgahan kundi para tulungan." data-en="If a wrong choice is made, you'll guide the child to the right path — not to judge, but to help.">Kung may mali, gagabayan mo ang bata sa tamang landas, hindi para husgahan kundi para tulungan.</li>
+        <li data-tl="May puntos, ngunit ang pagkatuto ang mahalaga." data-en="There are points, but learning is what matters most.">May puntos, ngunit ang pagkatuto ang mahalaga.</li>
+      </ol>
+      <p class="instr-note" data-tl="Tandaan: Tagalog pa rin ang mga kwento ng bawat kaso sa loob ng laro." data-en="Note: the individual case stories inside the game are still shown in Tagalog.">Tandaan: Tagalog pa rin ang mga kwento ng bawat kaso sa loob ng laro.</p>
+      <button class="btn btn--blue" id="start-btn" data-tl="Simulan" data-en="Start">Simulan</button>
+    </div>
+  </div>
+
+  <script>window.CASES = {{ cases_json|safe }};</script>
+  <script src="/static/lang.js?v=2"></script>
+  <script src="/static/booth.js?v=3"></script>
+</body>
+</html>

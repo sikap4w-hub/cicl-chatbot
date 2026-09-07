@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaalaman at Karapatan</title>
+  <link rel="icon" type="image/png" href="/static/art/logo.png">
+  <link rel="stylesheet" href="/static/style.css?v=5">
+</head>
+<body class="welcome-bg">
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo logo--img">
+        <img src="/static/art/logo.png" alt="Kaalaman at Karapatan logo" width="44" height="44">
+      </span>
+      <span class="brand-name-inline">Kaalaman at Karapatan</span>
+    </div>
+    <div class="lang-toggle">
+      <button class="lang" id="lang-tl" type="button" data-lang-btn="tl">Filipino</button>
+      <button class="lang" id="lang-en" type="button" data-lang-btn="en">English</button>
+    </div>
+  </header>
+
+  <main class="hero">
+    <div class="hero-left lang-fade">
+      <div class="badge badge-green" data-tl="✓ Walang account. Anonymous." data-en="✓ No account. Anonymous.">✓ Walang account. Anonymous.</div>
+      <h1 class="hero-title" data-tl-html="Kaalaman at<br>Karapatan" data-en-html="Knowledge and<br>Rights">Kaalaman at<br>Karapatan</h1>
+      <p class="hero-sub" data-tl="Ligtas na lugar para magtanong tungkol sa iyong mga karapatan." data-en="A safe space to ask questions about your rights.">Ligtas na lugar para magtanong tungkol sa iyong mga karapatan.</p>
+      <div class="hero-actions">
+        <a href="/menu" class="btn btn--blue" id="start-link"><span data-tl="Magsimula" data-en="Get Started">Magsimula</span> <span class="arrow">&rsaquo;</span></a>
+        <button type="button" class="btn btn--ghost" id="how-btn"><span data-tl="&#9432; Paano ito gumagana" data-en="&#9432; How this works">&#9432; Paano ito gumagana</span></button>
+      </div>
+      <p class="fineprint" data-tl="Hindi kami nangongolekta ng pangalan o personal na impormasyon." data-en="We do not collect your name or any personal information.">Hindi kami nangongolekta ng pangalan o personal na impormasyon.</p>
+    </div>
+    <div class="hero-right">
+      <div class="illus-box">
+        <img class="illus-img" src="/static/art/hero_welcome.png" alt="Kabataan na nag-aaral tungkol sa kanyang mga karapatan">
+      </div>
+    </div>
+  </main>
+
+  <div id="how-modal" class="overlay hidden">
+    <div class="modal-card lang-fade">
+      <h2 data-tl="Paano Ito Gumagana" data-en="How This Works">Paano Ito Gumagana</h2>
+      <ol class="instr-list">
+        <li data-tl-html="Walang kailangang account o pangalan &mdash; ligtas at anonymous ka rito." data-en-html="No account or name needed &mdash; you're safe and anonymous here.">Walang kailangang account o pangalan &mdash; ligtas at anonymous ka rito.</li>
+        <li data-tl-html="<b>Kaalaman (Chat):</b> Magtanong ka tungkol sa iyong mga karapatan, sa RA 9344, o sa proseso kapag may kaso ang isang bata. May instant na sagot sa Taglish." data-en-html="<b>Kaalaman (Chat):</b> Ask about your rights, RA 9344, or what happens when a child has a case. Get instant answers in Taglish.">
+          <b>Kaalaman (Chat):</b> Magtanong ka tungkol sa iyong mga karapatan, sa RA 9344, o sa proseso kapag may kaso ang isang bata. May instant na sagot sa Taglish.
+        </li>
+        <li data-tl-html="<b>Ang Tulungan (Laro):</b> Maglaro bilang isang case worker &mdash; makinig sa kwento ng bata, suriin ang ebidensya sa folder, at tumawag sa magulang kung kailangan, para matulungan ang bata sa tamang paraan." data-en-html="<b>Ang Tulungan (Game):</b> Play as a case worker &mdash; listen to a child's story, check the evidence in the folder, and call the parent if needed, to help the child the right way.">
+          <b>Ang Tulungan (Laro):</b> Maglaro bilang isang case worker &mdash; makinig sa kwento ng bata, suriin ang ebidensya sa folder, at tumawag sa magulang kung kailangan, para matulungan ang bata sa tamang paraan.
+        </li>
+        <li data-tl-html="Ang layunin: matuto ka tungkol sa iyong mga karapatan at sa paraan kung paano dapat tinutulungan ang mga bata &mdash; hindi pinaparusahan &mdash; sa ilalim ng batas." data-en-html="The goal: learn about your rights and how children should be helped &mdash; not punished &mdash; under the law.">
+          Ang layunin: matuto ka tungkol sa iyong mga karapatan at sa paraan kung paano dapat tinutulungan ang mga bata &mdash; hindi pinaparusahan &mdash; sa ilalim ng batas.
+        </li>
+      </ol>
+      <button class="btn btn--blue" id="how-close-btn" data-tl="Sige, gets ko na" data-en="Got it, thanks">Sige, gets ko na</button>
+    </div>
+  </div>
+
+  <script src="/static/lang.js?v=2"></script>
+  <script>
+    (function () {
+      var modal = document.getElementById("how-modal");
+      var openBtn = document.getElementById("how-btn");
+      var closeBtn = document.getElementById("how-close-btn");
+      openBtn.addEventListener("click", function () { modal.classList.remove("hidden"); });
+      closeBtn.addEventListener("click", function () { modal.classList.add("hidden"); });
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) modal.classList.add("hidden");
+      });
+
+      // Maayos na pag-alis papunta sa /menu: mag-fade-out muna ang buong
+      // pahina bago tuluyang lumipat, sa halip na biglaang paglipat.
+      var startLink = document.getElementById("start-link");
+      var PAGE_OUT_MS = 320;
+      startLink.addEventListener("click", function (e) {
+        e.preventDefault();
+        var href = startLink.getAttribute("href");
+        document.body.classList.add("page-out");
+        setTimeout(function () { window.location.href = href; }, PAGE_OUT_MS);
+      });
+    })();
+  </script>
+</body>
+</html>

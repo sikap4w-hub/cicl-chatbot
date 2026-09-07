@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="chat-header">
+  <a href="/menu" class="back-btn">&larr;</a>
+  <div>
+    <div class="chat-title" data-tl="Makipag-usap" data-en="Chat">Makipag-usap</div>
+    <div class="chat-status"><span class="dot"></span> KARAPATAN Assistant</div>
+  </div>
+</div>
+
+<div class="chat-body">
+  <div class="chat-main">
+    <div class="messages" id="messages">
+      <div class="msg system" data-tl="Ang impormasyon dito ay para makatulong sa pag-unawa sa iyong mga karapatan." data-en="The information here is meant to help you understand your rights.">Ang impormasyon dito ay para makatulong sa pag-unawa sa iyong mga karapatan.</div>
+      <div class="msg bot">
+        <span class="avatar">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none"><path d="M12 3l7 2.5v5C19 15 15.7 18.5 12 20 8.3 18.5 5 15 5 10.5v-5L12 3z" fill="#fff"/></svg>
+        </span>
+        <div class="bubble" data-tl="Kumusta! Maaari mo akong tanungin tungkol sa iyong mga karapatan." data-en="Hi! You can ask me about your rights.">Kumusta! Maaari mo akong tanungin tungkol sa iyong mga karapatan.</div>
+      </div>
+    </div>
+
+    <div class="chat-input">
+      <input id="user-input" type="text" autocomplete="off"
+        data-tl-placeholder="I-type ang iyong tanong..." data-en-placeholder="Type your question..."
+        placeholder="I-type ang iyong tanong...">
+      <button id="mic-btn" class="mic-btn"
+        data-tl-title="Speech input (ginagawa pa)" data-en-title="Speech input (coming soon)"
+        title="Speech input (ginagawa pa)">&#127908;</button>
+      <button id="send-btn" class="btn btn--purple send-btn"><span data-tl="&#10148; Ipadala" data-en="&#10148; Send">&#10148; Ipadala</span></button>
+    </div>
+  </div>
+
+  <aside class="chat-side">
+    <div class="side-label" data-tl="MGA PUWEDENG ITANONG" data-en="SUGGESTED QUESTIONS">MGA PUWEDENG ITANONG</div>
+    <!-- Ang listahang ito ay hinugot mula sa mga tanong na talagang
+         karaniwang tinatanong tungkol sa RA 9344 / CICL ayon sa mga
+         publikong legal na sanggunian sa Pilipinas (hal. mga artikulo
+         tungkol sa edad ng pananagutan, discernment, diversion, at
+         detention) -- na-verify rin na may talagang nahahanap na sagot
+         ang bawat isa sa law_chunks.json bago idinagdag dito. -->
+    <button class="quick-q" data-msg="Ano ang RA 9344?" data-tl="Ano ang RA 9344?" data-en="What is RA 9344?">Ano ang RA 9344?</button>
+    <button class="quick-q" data-msg="Ilang taon dapat bago ako managot sa batas?" data-tl="Ilang taon dapat bago ako managot sa batas?" data-en="How old do I have to be before I can be held liable under the law?">Ilang taon dapat bago ako managot sa batas?</button>
+    <button class="quick-q" data-msg="Ano ang discernment at bakit mahalaga ito?" data-tl="Ano ang discernment at bakit mahalaga ito?" data-en="What is discernment and why does it matter?">Ano ang discernment at bakit mahalaga ito?</button>
+    <button class="quick-q" data-msg="Ano ang mangyayari kapag inaresto o hinuli ako?" data-tl="Ano ang mangyayari kapag inaresto o hinuli ako?" data-en="What happens if I get arrested or taken into custody?">Ano ang mangyayari kapag inaresto o hinuli ako?</button>
+    <button class="quick-q" data-msg="Ano ang diversion program?" data-tl="Ano ang diversion program?" data-en="What is a diversion program?">Ano ang diversion program?</button>
+    <button class="quick-q" data-msg="Ano ang intervention program?" data-tl="Ano ang intervention program?" data-en="What is the intervention program?">Ano ang intervention program?</button>
+    <button class="quick-q" data-msg="Puwede ba akong makulong nang habambuhay?" data-tl="Puwede ba akong makulong nang habambuhay?" data-en="Can I be sentenced to life imprisonment?">Puwede ba akong makulong nang habambuhay?</button>
+    <button class="quick-q" data-msg="Saan ako dadalhin kung kailangan ng detention?" data-tl="Saan ako dadalhin kung kailangan ng detention?" data-en="Where will I be taken if I need to be detained?">Saan ako dadalhin kung kailangan ng detention?</button>
+    <button class="quick-q" data-msg="Magkakaroon ba ako ng criminal record?" data-tl="Magkakaroon ba ako ng criminal record?" data-en="Will I have a criminal record?">Magkakaroon ba ako ng criminal record?</button>
+    <button class="quick-q" data-msg="Sino ang makakatulong sa akin?" data-tl="Sino ang makakatulong sa akin?" data-en="Who can help me?">Sino ang makakatulong sa akin?</button>
+
+    <div class="paalala">
+      <div class="paalala-title" data-tl="&#9432; Paalala" data-en="&#9432; Reminder">&#9432; Paalala</div>
+      <div data-tl="Hindi ito legal advice. Para sa tunay na kaso, kumausap ng abogado o trusted adult." data-en="This is not legal advice. For an actual case, talk to a lawyer or a trusted adult.">Hindi ito legal advice. Para sa tunay na kaso, kumausap ng abogado o trusted adult.</div>
+    </div>
+  </aside>
+</div>
+{% endblock %}

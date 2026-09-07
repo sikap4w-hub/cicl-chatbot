@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="chat-header">
+  <a href="/kuwento/{{ story.id }}" class="back-btn">&larr;</a>
+  <div>
+    <div class="chat-title">Ano ang Maaaring Mangyari?</div>
+    <div class="chat-status">{{ story.title }} &middot; Pinili: {{ choice }}</div>
+  </div>
+</div>
+
+<div class="result-badge">&#9432; Pang-edukasyon na resulta</div>
+
+<div class="result-box">
+  <p class="result-text">{{ consequence.result }}</p>
+</div>
+
+<div class="tandaan-box">
+  <div class="tandaan-title">&#128737; Mahalagang Tandaan</div>
+  <p>{{ consequence.tandaan }}</p>
+</div>
+
+<div class="result-actions">
+  <a href="/kuwento/{{ story.id }}/tapos" class="btn btn--blue">Magpatuloy &rsaquo;</a>
+  <a href="/kuwento/{{ story.id }}" class="btn btn--ghost">Ulitin ang Choice</a>
+</div>
+{% endblock %}

@@ -1,0 +1,79 @@
+CHARACTER ART CHECKLIST
+=======================
+
+Format : PNG, transparent background (walang puting kahon)
+Sukat  : mga 700 x 1000 px, buong katawan, nakatayo, nakaharap
+Laki   : 600 KB pababa bawat file
+Lagay  : static/art/
+
+Isang pangalan lang ang tama. Eksaktong maliit na titik, may underscore.
+
+bata01  ->  Ang Cellphone sa Palengke / Ang Sapilitang Pagkuha
+    [ ] bata01_neutral.png
+    [ ] bata01_kabado.png
+    [ ] bata01_malungkot.png
+    [ ] bata01_ginhawa.png
+
+bata02  ->  Ang Naibalik na Pitaka / Ang Tumulong sa Nasugatan
+    [ ] bata02_neutral.png
+    [ ] bata02_kabado.png
+    [ ] bata02_malungkot.png
+    [ ] bata02_ginhawa.png
+
+bata03  ->  Ang Away sa Eskwelahan / Ang Nagsabi ng Totoo
+    [ ] bata03_neutral.png
+    [ ] bata03_kabado.png
+    [ ] bata03_malungkot.png
+    [ ] bata03_ginhawa.png
+
+bata04  ->  Ang Pader na Sinulatan / Ang Tumanggi sa Barkada
+    [ ] bata04_neutral.png
+    [ ] bata04_kabado.png
+    [ ] bata04_malungkot.png
+    [ ] bata04_ginhawa.png
+
+bata05  ->  Ang Padalang Pakete / Ang Isinauling Sukli
+    [ ] bata05_neutral.png
+    [ ] bata05_kabado.png
+    [ ] bata05_malungkot.png
+    [ ] bata05_ginhawa.png
+
+bata06  ->  Ang Inuman sa Plaza / Ang Nag-report ng Bully
+    [ ] bata06_neutral.png
+    [ ] bata06_kabado.png
+    [ ] bata06_malungkot.png
+    [ ] bata06_ginhawa.png
+
+bata07  ->  Ang Nakakahiyang Post / Ang Tumulong sa Matanda
+    [ ] bata07_neutral.png
+    [ ] bata07_kabado.png
+    [ ] bata07_malungkot.png
+    [ ] bata07_ginhawa.png
+
+bata08  ->  Ang Dalang Patalim / Ang Pinili ang Pag-aaral
+    [ ] bata08_neutral.png
+    [ ] bata08_kabado.png
+    [ ] bata08_malungkot.png
+    [ ] bata08_ginhawa.png
+
+bata09  ->  Ang Online na Taya / Ang Nagligtas ng Hayop
+    [ ] bata09_neutral.png
+    [ ] bata09_kabado.png
+    [ ] bata09_malungkot.png
+    [ ] bata09_ginhawa.png
+
+bata10  ->  Ang Sabwatan sa Labas / Ang Nagpaalam sa Nakita
+    [ ] bata10_neutral.png
+    [ ] bata10_kabado.png
+    [ ] bata10_malungkot.png
+    [ ] bata10_ginhawa.png
+
+Kabuuan: 40 na file (10 bata x 4 ekspresyon)
+
+Ekspresyon:
+  neutral    - kalmado, nakatingin sa harap
+  kabado     - kinakabahan, nag-aalala, iwas-tingin
+  malungkot  - nakayuko, nalulungkot, nagsisisi
+  ginhawa    - kampante, may pag-asa, bahagyang ngiti
+
+Pagkatapos maglagay: python check_art.py   o buksan ang /laro/art

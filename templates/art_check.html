@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Art - Kaalaman at Karapatan</title>
+  <link rel="icon" type="image/png" href="/static/art/logo.png">
+  <link rel="stylesheet" href="/static/style.css?v=5">
+</head>
+<body class="booth-body">
+  <div class="artcheck">
+    <button class="booth-exit" onclick="location.href='/laro'">&lsaquo; Balik sa laro</button>
+    <h1>Character Art</h1>
+    <p class="sub">
+      {{ have }} sa {{ total }} na file ang nasa <code>static/art/</code>.
+      {% if missing %}<b style="color:#c0392b">{{ missing }} pa ang kulang.</b>{% else %}<b style="color:#1e8f57">Kumpleto na.</b>{% endif %}
+      Naming: <code>{bata}_{ekspresyon}.png</code> &mdash; transparent PNG, mga 700&times;1000 px.
+    </p>
+
+    {% for r in rows %}
+    <div class="art-row">
+      <h3>{{ r.key }} &middot; <span style="font-weight:400;color:#777">{{ r.cases|join(" / ") }}</span></h3>
+      <div class="art-grid">
+        {% for m in r.moods %}
+        <div class="art-cell {{ '' if m.exists else 'missing' }}">
+          {% if m.exists %}
+            <img src="/static/art/{{ r.key }}_{{ m.mood }}.png" alt="{{ r.key }} {{ m.mood }}">
+            <div class="tag">{{ m.mood }}</div>
+          {% else %}
+            <div class="art-miss">&#63;</div>
+            <div class="tag">{{ r.key }}_{{ m.mood }}.png</div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html>

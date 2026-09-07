@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+jinja2
+pydantic
+python-multipart
+google-genai
+python-dotenv
+
+# Kailangan lang ng build_lawbase.py (para gawin ulit ang law_chunks.json
+# kung babaguhin ang mga file sa law_source/) -- hindi kailangan sa
+# pag-run ng app mismo.
+pdfplumber
