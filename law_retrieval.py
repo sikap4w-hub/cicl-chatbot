@@ -146,6 +146,45 @@ QUERY_SYNONYMS = {
     "koneksyon": ["coverage", "scope", "applicability", "minor", "child", "cover"],
     "kinalaman": ["coverage", "scope", "applicability", "minor", "child", "cover"],
     "kaugnayan": ["coverage", "scope", "applicability", "minor", "child", "cover"],
+
+    # Round-2 adversarial testing (partner, Priority 1): zero synonym
+    # coverage para sa kolokyal/maling-baybay na Taglish variants ng
+    # "detain"/"detention" -- hal. "detine", "dinetine", "ma-detine",
+    # "madetine", "na-detine", "pagdetine", "dine-tain", "detined".
+    # Hindi lang ito tungkol sa listahan ng eksaktong salitang ito -- ang
+    # ugat ng problema ay ang RETRIEVAL ay walang tolerance sa VARYING
+    # spelling/conjugation ng konseptong "detention" (kasama na ang mga
+    # error na dulot ng speech-to-text sa full system, dahil Taglish STT
+    # ay madalas mag-transcribe ng English legal terms nang maling
+    # baybay). Idinagdag dito ang lahat ng morphological variant
+    # (base, -in/-an affix, ma-/na- stative prefix, pag- nominalization,
+    # at hyphenated forms na hinahati ng tokenizer sa magkahiwalay na
+    # token dahil walang hyphen support ang tokenize() regex).
+    "detine": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    "detain": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    "dinetine": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    "madetine": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    "nadetine": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    "pagdetine": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    "magdedetine": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    "detained": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    "detined": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    "detain'd": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    "detenido": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    "detensyon": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    "deten": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    # "ma-detine", "na-detine", "dine-tain" atbp. ay nahahati ng
+    # tokenizer sa magkahiwalay na piraso dahil walang hyphen sa
+    # TOKEN_RE nito -- kaya kailangan din ng entry para sa mga piraso
+    # mismo (hal. "tain" mula sa "dine-tain").
+    "tain": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    "detn": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    # future/reduplicated Tagalog conjugations ("ma-" + reduplicated
+    # first syllable, common sa mga tanong tungkol sa mangyayari pa lang)
+    "madedetine": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    "nadedetine": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    "dedetenin": ["detention", "kulong", "bahay", "pagasa", "custody"],
+    "idedetine": ["detention", "kulong", "bahay", "pagasa", "custody"],
 }
 
 

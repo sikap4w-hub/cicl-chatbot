@@ -6,6 +6,11 @@ python-multipart
 google-genai
 python-dotenv
 
+# Enhanced NLP intent recognition (SOP 2) -- ginagamit ng intent_engine.py
+# para sa TfidfVectorizer + LogisticRegression na pipeline, kapalit ng
+# dating hand-rolled TF-IDF/cosine na walang external library.
+scikit-learn
+
 # Kailangan lang ng build_lawbase.py (para gawin ulit ang law_chunks.json
 # kung babaguhin ang mga file sa law_source/) -- hindi kailangan sa
 # pag-run ng app mismo.

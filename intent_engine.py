@@ -1,41 +1,66 @@
 """
-intent_engine.py - Simpleng NLP intent recognition (walang malaking dependency).
+intent_engine.py - NLP intent recognition, ngayon gamit ang scikit-learn
+(dating hand-rolled TF-IDF/cosine, walang external library).
 
-Paano gumagana:
+Paano gumagana ngayon:
 1. Bawat intent (galing sa game_data/intents.json) ay may listahan ng
    "examples" (Tagalog/Taglish) at "examples_en" (English) - halimbawang
    pangungusap na kumakatawan dito, kahit anong wika ang gamit.
-2. Ginagawang TF-IDF vector ang LAHAT ng examples (parehong wika), at ang
-   bagong mensahe ng user. Dahil dito, nakikilala ang intent kahit Tagalog,
-   Taglish, o pure English ang tanong -- ang TF-IDF/cosine ay batay sa
-   pagtutugma ng salita, kaya awtomatikong tutugma ang English na tanong sa
-   English na examples, at ang Tagalog/Taglish na tanong sa Tagalog examples.
-3. Ang intent na pinakamalapit (cosine similarity) sa mensahe ng user ang
+2. Ang lahat ng examples (parehong wika, maliban sa "fallback" na walang
+   sariling examples) ay isinasanay bilang labeled na training data sa isang
+   scikit-learn Pipeline: TfidfVectorizer (gamit ang SARILING tokenize() sa
+   ibaba, kasama ang elongation-collapse at stopword-filtering nito) na
+   sinusundan ng LogisticRegression. Awtomatiko pa ring tutugma ang English
+   na tanong sa English na examples, at ang Tagalog/Taglish na tanong sa
+   Tagalog examples, dahil parehong TF-IDF/word-overlap pa rin ang batayan.
+3. Ang intent na may pinakamataas na predict_proba() sa mensahe ng user ang
    siyang tinuturing na "nais sabihin" niya. Kapag masyadong mababa ang
-   pagkakatugma (below CONFIDENCE_THRESHOLD), "fallback" ang ibabalik.
+   confidence (below CONFIDENCE_THRESHOLD), "fallback" ang ibabalik.
 4. Bukod dito, tinitingnan din ng detect_lang() kung anong wika ang gamit sa
    tanong (Tagalog/Taglish o English) para malaman kung aling bersyon ng
    sagot (responses vs responses_en) ang ibabalik -- Tagalog/Taglish ang
    input, Tagalog ang sagot; English ang input, English ang sagot.
 
-Sadyang walang external ML library (scikit-learn, transformers, atbp.) para
-hindi na kailangan pang mag-install ng malalaking package -- built-in na
-Python lang (re, math, random) ang ginamit. Sapat na ito para sa laki ng
-intent inventory na ito, at madaling palawakin (magdagdag lang ng mga bagong
-"examples"/"examples_en" sa intents.json, hindi na kailangang baguhin ang
-code na ito).
+BAKIT NILIPAT SA SCIKIT-LEARN: ang dating hand-rolled cosine-similarity na
+bersyon ay sinadyang walang external ML library, pero ito rin ang dahilan
+kung bakit hindi ito literal na masasabing "enhanced NLP" -- tugma lang ito
+sa pinaka-magkatulad na TRAINING EXAMPLE, hindi tunay na sinanay/"trained"
+na modelo. Ang bersyong ito ay gumagamit na ng tunay na supervised learning
+(TfidfVectorizer + LogisticRegression, parehong may .fit() sa training data),
+kaya't tugma na sa layunin ng SOP 2 (Enhanced NLP Intent Recognition) --
+pero PAALALA: hangga't wala pang totoong Taglish speech-derived na
+intent-annotated dataset (SOP 1 pa lang ang kailangan dito, hindi pa
+built), ang tanging "training data" na mayroon ay ang parehong maliit na
+listahan ng examples sa intents.json na ginamit na rin ng dating bersyon --
+kaya ang tunay na benepisyo ngayon ay sa PAMAMARAAN (real ML pipeline,
+madaling palitan/i-retrain kapag may bagong data na), hindi pa sa laki ng
+data.
+
+Ang tokenize()/_collapse_trailing_elongation()/detect_lang() sa ibaba ay
+HINDI ginalaw -- pareho pa ring ginagamit ng TfidfVectorizer sa itaas bilang
+custom tokenizer, kaya nananatili ang mga natutunang ayos dito (trailing-only
+elongation collapse, stopword filtering) nang walang pagbabago.
 """
 import json
-import math
 import random
 import re
-from collections import Counter
 from pathlib import Path
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.linear_model import LogisticRegression
+from sklearn.pipeline import Pipeline
 
 BASE = Path(__file__).parent
 INTENTS_PATH = BASE / "game_data" / "intents.json"
 
-CONFIDENCE_THRESHOLD = 0.22
+# Ibang saklaw ng confidence values ang LogisticRegression predict_proba()
+# kumpara sa dating cosine similarity, kaya ibang threshold din ang tama --
+# na-verify ito sa pamamagitan ng regression testing laban sa parehong
+# established test set na ginamit noong cosine pa ang ginagamit (mga
+# maikling greeting/thanks kahit may elongation, hanggang sa mga compound na
+# mensaheng may tunay na tanong sa loob -- tingnan ang docstring ng
+# _try_conversational_shortcut() sa gemini_engine.py para sa buong listahan).
+CONFIDENCE_THRESHOLD = 0.30
 
 # Karaniwang salitang Tagalog/Taglish/English na hindi gaanong nagdadala ng
 # kahulugan para sa pagkilala ng intent (function words). Tinatanggal
@@ -57,10 +82,60 @@ STOPWORDS = {
 
 TOKEN_RE = re.compile(r"[a-zA-Z0-9ñÑ]+(?:-[a-zA-Z0-9]+)?")
 
+# NATUKLASANG BUG (adversarial testing): mga casual/excited na pagbabaybay
+# ng tunay na greeting/thanks (hal. "Hiiiii", "heyy", "salamuchhh") ay
+# nagbibigay ng 0.0 confidence -- ZERO overlap sa training examples --
+# dahil sa paulit-ulit na letra na walang katumbas na eksaktong salita sa
+# intents.json. Resulta: nahuhulog ang mga simpleng bating ito sa
+# NO_CONTEXT_FALLBACK/CLARIFICATION_FALLBACK na parang seryosong tanong
+# ito na walang nahanap na sagot -- malamig at hindi angkop para sa isang
+# batang nagpapakita lang ng excitement o pasasalamat.
+#
+# UNANG TANGKANG AYOS (NAKAPIT/NASIRA, sinalo bago pa na-ship): i-collapse
+# ang ANUMANG run ng 3+ magkasunod na parehong letra kahit SAAN sa salita.
+# NAKAKA-CORRUPT PALA ITO ng mga TUNAY na salita -- "maaari" (isang
+# napakakaraniwang Tagalog na salita) ay may GENUINE na 3 magkasunod na
+# "a" sa GITNA nito, kaya na-collapse ito papuntang "mari" (maling salita).
+#
+# TAMANG AYOS: i-collapse lang ang run kapag nasa DULO ng token ito (hindi
+# saan mang bahagi), dahil ang elongation-for-emphasis ay palaging
+# nangyayari sa HULING tunog ng salita ("hiiiii", "salamuchhh", "pooo"),
+# hindi sa gitna -- samantalang ang mga tunay na salita na may paulit-ulit
+# na letra (tulad ng "maaari") ay laging nasa GITNA ito, hindi sa dulo.
+# Ligtas din ito para sa mga salitang English na nagtatapos sa DALAWANG
+# magkaparehong letra (hal. "still", "miss") dahil 3+ (hindi 2) ang
+# kailangan bago mag-trigger ang collapse.
+#
+# ROUND-3 NA NATUKLASANG BUG (partner's testing): "Heeeyyy" ay may DALAWANG
+# HIWALAY na elongated run sa dulo ("eee" tapos "yyy"), pero ang regex sa
+# itaas ay isang beses lang tumatakbo at ang "$" ay tumutugma lang sa PINAKA
+# HULING run -- kaya "yyy" lang ang na-collapse, natitira pa ring "heeey"
+# (hindi "hey") na wala pa ring tugma sa training vocab. AYOS: sa halip na
+# isang solong run lang, hinahanap muna ang PUNONG "trailing elongation
+# zone" -- ang pinakamahabang suffix ng token na binubuo LAMANG ng magkakasunod
+# na 3+-repeat runs (maaaring magkaibang letra bawat run, basta bawat isa ay
+# sariling 3+ na paulit-ulit na letra, at magkadugtong hanggang sa dulo ng
+# token) -- tapos doon lang, sa LOOB ng nahanap na zone na iyon, kino-collapse
+# ang BAWAT run nang paisa-isa. Ligtas pa rin ito para sa "maaari" dahil ang
+# "aaa" doon ay HINDI nasa dulo (may "ri" pa pagkatapos nito), kaya hindi ito
+# kasama sa "trailing zone" kahit paano.
+_TRAILING_ELONGATION_ZONE_RE = re.compile(r"(?:(.)\1{2,})+$")
+_SINGLE_ELONGATION_RUN_RE = re.compile(r"(.)\1{2,}")
+
+
+def _collapse_trailing_elongation(token):
+    m = _TRAILING_ELONGATION_ZONE_RE.search(token)
+    if not m:
+        return token
+    prefix = token[: m.start()]
+    collapsed_zone = _SINGLE_ELONGATION_RUN_RE.sub(r"\1", m.group(0))
+    return prefix + collapsed_zone
+
 
 def tokenize(text):
     text = text.lower()
     tokens = TOKEN_RE.findall(text)
+    tokens = [_collapse_trailing_elongation(t) for t in tokens]
     return [t for t in tokens if t not in STOPWORDS and len(t) > 1]
 
 
@@ -111,68 +186,54 @@ class IntentEngine:
         data = json.loads(Path(intents_path).read_text(encoding="utf-8"))
         self.intents = {i["id"]: i for i in data["intents"]}
 
-        # docs: listahan ng (intent_id, token_list) para sa bawat example,
-        # kasama ang Tagalog ("examples") at English ("examples_en")
-        # bersyon -- pareho itong itinuturing na training data ng parehong
-        # intent, kaya nakikilala ang parehong wika nang walang extra code.
-        self.docs = []
+        # X/y: parehong TRAINING DATA gaya ng dati (Tagalog "examples" +
+        # English "examples_en" ng bawat intent, maliban sa "fallback" na
+        # walang sariling examples -- hindi ito puwedeng maging isang klase
+        # ng supervised classifier na walang example, kaya "fallback" ang
+        # ibinabalik sa halip kapag mababa ang confidence ng lahat ng tunay
+        # na klase, tulad ng dati).
+        X, y = [], []
         for intent in data["intents"]:
+            if intent["id"] == "fallback":
+                continue
             all_examples = list(intent.get("examples", [])) + list(intent.get("examples_en", []))
             for example in all_examples:
-                toks = tokenize(example)
-                if toks:
-                    self.docs.append((intent["id"], toks))
+                X.append(example)
+                y.append(intent["id"])
 
-        self._build_idf()
-        self.doc_vectors = [
-            (intent_id, self._vectorize(toks)) for intent_id, toks in self.docs
-        ]
-
-    def _build_idf(self):
-        n_docs = len(self.docs)
-        df = Counter()
-        for _, toks in self.docs:
-            for term in set(toks):
-                df[term] += 1
-        # smoothed idf, katulad ng ginagawa ng scikit-learn
-        self.idf = {
-            term: math.log((1 + n_docs) / (1 + freq)) + 1.0
-            for term, freq in df.items()
-        }
-        self.n_docs = n_docs
-
-    def _vectorize(self, tokens):
-        if not tokens:
-            return {}
-        tf = Counter(tokens)
-        vec = {}
-        for term, count in tf.items():
-            idf = self.idf.get(term)
-            if idf is None:
-                continue  # salitang hindi nakita sa training examples
-            vec[term] = count * idf
-        norm = math.sqrt(sum(w * w for w in vec.values()))
-        if norm > 0:
-            vec = {t: w / norm for t, w in vec.items()}
-        return vec
-
-    @staticmethod
-    def _cosine(vec_a, vec_b):
-        if not vec_a or not vec_b:
-            return 0.0
-        # umiikot sa mas maikling vector para mas mabilis
-        if len(vec_a) > len(vec_b):
-            vec_a, vec_b = vec_b, vec_a
-        return sum(w * vec_b.get(t, 0.0) for t, w in vec_a.items())
+        # tokenizer=tokenize (ang parehong function sa itaas, may elongation
+        # collapse at stopword filtering na) + preprocessor na walang ginagawa
+        # + token_pattern=None ay ang tamang paraan para gamitin ang SARILING
+        # tokenizer ng TfidfVectorizer sa halip na ang default nito.
+        # ngram_range=(1, 2) para makuha rin ang mga dalawang-salitang parirala
+        # (hal. "hindi legal", "record ko"), hindi lang pantay na salita.
+        # class_weight="balanced" dahil malaki ang pagkakaiba ng bilang ng
+        # examples bawat intent (3 hanggang 19), kaya kung hindi ito
+        # gagamitin, mananaig lagi ang mga intent na may pinakamaraming
+        # examples (greeting, thanks) kahit hindi talaga sila ang pinaka-tugma.
+        self.pipeline = Pipeline([
+            ("tfidf", TfidfVectorizer(
+                tokenizer=tokenize,
+                preprocessor=lambda s: s,
+                token_pattern=None,
+                ngram_range=(1, 2),
+                sublinear_tf=True,
+                min_df=1,
+            )),
+            ("clf", LogisticRegression(
+                max_iter=3000,
+                class_weight="balanced",
+                C=5.0,
+            )),
+        ])
+        self.pipeline.fit(X, y)
 
     def classify(self, text):
-        """Ibinabalik: (intent_id, confidence, best_matching_example_tokens)"""
-        query_vec = self._vectorize(tokenize(text))
-        best_intent, best_score = "fallback", 0.0
-        for intent_id, doc_vec in self.doc_vectors:
-            score = self._cosine(query_vec, doc_vec)
-            if score > best_score:
-                best_intent, best_score = intent_id, score
+        """Ibinabalik: (intent_id, confidence)"""
+        proba = self.pipeline.predict_proba([text])[0]
+        classes = self.pipeline.classes_
+        best_idx = proba.argmax()
+        best_intent, best_score = classes[best_idx], float(proba[best_idx])
         if best_score < CONFIDENCE_THRESHOLD:
             return "fallback", best_score
         return best_intent, best_score

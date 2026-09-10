@@ -18,7 +18,10 @@
         "uy",
         "magandang gabi",
         "magandang umaga",
-        "magandang hapon"
+        "magandang hapon",
+        "hi po",
+        "heyy",
+        "ayo"
       ],
       "examples_en": [
         "hello",
@@ -26,7 +29,9 @@
         "good morning",
         "good afternoon",
         "is anyone there",
-        "hey"
+        "hey",
+        "heyy",
+        "yo"
       ],
       "responses": [
         "Kumusta! Ako si KARAPATAN, parang kaibigan mong pwede mong tanungin tungkol sa mga karapatan mo, o kung ano ang RA 9344.",
@@ -44,14 +49,26 @@
         "maraming salamat",
         "thank you",
         "salamat po sa tulong",
-        "okay salamat"
+        "okay salamat",
+        "salamuch",
+        "salamuch po",
+        "slamat",
+        "slamat po",
+        "slamattt",
+        "tnx",
+        "tnx po",
+        "ty",
+        "ty po"
       ],
       "examples_en": [
         "thank you",
         "thanks a lot",
         "thanks for the help",
         "ok thank you",
-        "thank you so much"
+        "thank you so much",
+        "tnx",
+        "ty",
+        "thx"
       ],
       "responses": [
         "Walang anuman! Bumalik ka lang ulit kung may tanong ka pa, ha?",
