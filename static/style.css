@@ -96,6 +96,33 @@ body { font-family:"Segoe UI",Arial,Helvetica,sans-serif; font-size:17px; color:
 
 /* ---------- Chat screen ---------- */
 .chat-header{display:flex;align-items:center;gap:14px;margin-bottom:18px;}
+.pilot-toggle{margin-left:auto;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 16px;
+  font-size:13px;font-weight:600;color:var(--muted);cursor:pointer;box-shadow:0 4px 10px rgba(31,39,51,.05);white-space:nowrap;}
+.pilot-toggle.on{background:linear-gradient(135deg,var(--orange-1),var(--orange-2));color:#fff;border-color:transparent;}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(20,16,32,.55);display:flex;align-items:center;justify-content:center;
+  padding:20px;z-index:100;}
+/* Ang [hidden] attribute selector ay MAY PAREHONG specificity gaya ng
+   isang class selector -- kaya kung basta ".modal-overlay{display:flex}"
+   lang ang tanging rule, dinadaig nito ang default browser [hidden]{display:
+   none} (dahil author stylesheet, hindi UA default). Resulta: kahit
+   itakda ng JS ang element.hidden = true, VISIBLE PA RIN ito. Ito ang
+   naging dahilan kung bakit hindi nagsasara ang consent modal kahit
+   tama ang JS logic (nagbago na nga ang "Pilot Mode: ON" badge, ibig
+   sabihin tumakbo ang click handler -- CSS lang talaga ang sira). Ang
+   sumusunod na rule ay may MAS MATAAS na specificity (class + attribute)
+   kaysa sa ".modal-overlay" lang, kaya laging mananaig ito anuman ang
+   pagkakasunod-sunod sa file. */
+.modal-overlay[hidden]{display:none;}
+.modal-box{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:26px;max-width:480px;width:100%;
+  max-height:88vh;overflow-y:auto;}
+.modal-title{font-size:19px;font-weight:800;margin-bottom:12px;}
+.modal-body{font-size:14.5px;line-height:1.55;color:var(--ink);}
+.modal-check{display:flex;align-items:flex-start;gap:10px;margin-top:18px;font-size:13.5px;color:var(--ink);cursor:pointer;}
+.modal-check input{margin-top:3px;flex:0 0 auto;width:16px;height:16px;}
+.modal-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:20px;flex-wrap:wrap;}
+.modal-actions .btn{min-height:44px;padding:0 20px;font-size:14px;}
+.modal-actions .btn:disabled{opacity:.5;cursor:not-allowed;}
 .back-btn{width:44px;height:44px;border-radius:12px;background:#eef1f7;display:flex;align-items:center;justify-content:center;
   text-decoration:none;color:var(--ink);font-size:20px;}
 .chat-title{font-size:22px;font-weight:800;}
@@ -126,8 +153,16 @@ body { font-family:"Segoe UI",Arial,Helvetica,sans-serif; font-size:17px; color:
 
 .chat-input{display:flex;gap:10px;align-items:center;padding:14px;border-top:1px solid var(--line);background:#fafafe;}
 #user-input{flex:1;padding:14px 16px;border:1px solid #ddd;border-radius:999px;font-size:16px;}
+#user-input.transcribing{border-color:var(--orange-1);background:linear-gradient(90deg,#fff,#fff5eb,#fff);
+  background-size:200% 100%;animation:transcribing-shimmer 1.3s linear infinite;}
+#user-input.transcribing::placeholder{color:var(--orange-2);font-style:italic;}
+@keyframes transcribing-shimmer{0%{background-position:200% 0;}100%{background-position:-200% 0;}}
 .mic-btn{width:52px;height:52px;border-radius:50%;border:none;cursor:pointer;font-size:20px;color:#fff;
   background:linear-gradient(135deg,var(--orange-1),var(--orange-2));box-shadow:0 0 0 3px var(--cream),0 6px 14px rgba(242,101,26,.3);}
+.mic-btn.recording{background:linear-gradient(135deg,#e0537d,#c73b63);animation:mic-pulse 1.1s infinite ease-in-out;}
+@keyframes mic-pulse{0%,100%{box-shadow:0 0 0 3px var(--cream),0 6px 14px rgba(199,59,99,.35);}50%{box-shadow:0 0 0 7px var(--cream),0 6px 18px rgba(199,59,99,.5);}}
+#user-input:disabled,.send-btn:disabled,.quick-q:disabled{opacity:.55;cursor:not-allowed;}
+.mic-btn:disabled:not(.recording){opacity:.55;cursor:not-allowed;}
 .send-btn{min-height:52px;}
 
 .chat-side{width:290px;flex:0 0 auto;display:flex;flex-direction:column;gap:8px;overflow-y:auto;padding-right:2px;}
@@ -189,6 +224,26 @@ body { font-family:"Segoe UI",Arial,Helvetica,sans-serif; font-size:17px; color:
 .result-text{font-size:17px;line-height:1.7;}
 .tandaan-box{background:#fdf6e3;border:1px solid #f0e2b6;border-radius:14px;padding:18px 20px;margin-top:18px;color:#7a6320;}
 .tandaan-title{font-weight:700;margin-bottom:6px;}
+
+/* "Salita laban sa Ginawa" -- reveal card sa resulta() na ipinapakita ang
+   eksaktong sugarcoated na parirala ng bata (may guhit sa ibabaw, parang
+   "iyan ang sabi niya pero hindi iyan ang totoo") kontra sa payak na
+   totoo, sa orange accent na tumutugma sa "Hindi Tugma ang Kwento" na
+   desisyon-button (parehong "may hindi tugma" na tema). */
+.sugarcoat-box{
+  background:linear-gradient(180deg,#fff7ee,#fff);
+  border:1px solid #ffd9ad; border-radius:14px; padding:16px 18px; margin-bottom:14px;
+}
+.sugarcoat-title{font-weight:800; font-size:13px; letter-spacing:.5px; color:var(--orange-2); margin-bottom:10px;}
+.sugarcoat-line{font-size:15px; line-height:1.5; margin-bottom:4px;}
+.sugarcoat-line:last-child{margin-bottom:0;}
+.sugarcoat-tag{font-weight:700; margin-right:4px;}
+.sugarcoat-said{color:#a39c8f;}
+.sugarcoat-said .sugarcoat-tag{color:#8a8478;}
+.sugarcoat-said{text-decoration:line-through; text-decoration-color:#d7b98f; text-decoration-thickness:1.5px;}
+.sugarcoat-said .sugarcoat-tag{text-decoration:none;}
+.sugarcoat-truth{color:var(--ink); font-weight:600;}
+.sugarcoat-truth .sugarcoat-tag{color:var(--orange-2);}
 .result-actions{display:flex;gap:14px;margin-top:22px;flex-wrap:wrap;}
 @media (max-width:900px){ .scenario-grid{grid-template-columns:1fr;} }
 
@@ -255,7 +310,7 @@ body { font-family:"Segoe UI",Arial,Helvetica,sans-serif; font-size:17px; color:
   display:flex;align-items:flex-end;justify-content:center;
   box-shadow:inset 0 4px 16px rgba(0,0,0,.08),0 10px 24px rgba(31,39,51,.12);}
 .scene-bg{position:absolute;inset:0;z-index:1;
-  background-image:url('/static/art/bg_barangay_hallway.jpg');
+  background-image:url('/static/art/bg_barangay_hallway.jpg?v=2');
   background-size:cover;background-position:center 32%;}
 .scene-fg{position:absolute;left:0;right:0;bottom:-4px;width:100%;height:auto;display:block;z-index:3;pointer-events:none;
   filter:drop-shadow(0 -6px 10px rgba(0,0,0,.15));}
@@ -301,27 +356,121 @@ body.booth-body--full { overflow:hidden; background:#000; }
 .booth--full { max-width:none; margin:0; padding:0; animation:none; height:100vh; height:100dvh; }
 
 .scene-full { position:relative; width:100vw; height:100vh; height:100dvh; overflow:hidden; }
-.scene-full .scene-bg {
-  position:absolute; inset:0; z-index:1;
-  background-image:url('/static/art/bg_barangay_hallway.jpg');
-  background-size:cover; background-position:center 30%;
+
+/* ---------- Ang 16:9 na entablado (stage) ----------
+   Parehong 16:9 ang dalawang larawan ng eksena (bg_barangay_hallway.jpg at
+   fg_wooden_desk.png = 1920x1080). Kapag "cover" ang sukat ng entablado at
+   naka-gitna ito, lahat ng nasa loob ay puwedeng ilagay sa PERCENT ng
+   entablado -- kaya laging tugma ang overlay sa mismong iginuhit na larawan
+   kahit hindi 16:9 ang window (hal. 1920x870 kapag may browser tabs/bookmarks).
+   max() = kunin kung alin ang mas malaki: ang window mismo, o ang sukat na
+   kailangan para mapanatili ang 16:9. Ang labis ay naputol lang ng
+   overflow:hidden ng .scene-full (transparent/kisame ang naputol sa itaas,
+   gilid ng mesa sa ibaba -- pareho walang mawawalang mahalaga). */
+.scene-stage {
+  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+  width:max(100vw, calc(100vh * 16 / 9));
+  height:max(100vh, calc(100vw * 9 / 16));
+  width:max(100vw, calc(100dvh * 16 / 9));
+  height:max(100dvh, calc(100vw * 9 / 16));
 }
-.scene-full .char-stage {
-  position:absolute; left:50%; bottom:0;
+.scene-stage .scene-bg {
+  position:absolute; inset:0; z-index:1;
+  background-image:url('/static/art/bg_barangay_hallway.jpg?v=2');
+  background-size:100% 100%; background-position:center;
+}
+.scene-stage .scene-fg {
+  position:absolute; inset:0; width:100%; height:100%; z-index:3; pointer-events:none;
+}
+
+/* Ang art ng bata ay "bust" portrait (ulo + balikat lang, hindi buong
+   katawan). 80% ng taas ng entablado ang sukat: ang ulo ay nasa itaas na
+   ~20%-45% ng entablado (katulad ng reference mockup), at ang natitirang
+   ibaba ay natatabunan na ng mesa (nagsisimula ang mesa sa 64.8%). */
+.scene-stage .char-stage {
+  position:absolute; left:50%; bottom:6%;
   transform:translateX(-50%) scale(1); transform-origin:center bottom; opacity:1;
   transition:transform 3s cubic-bezier(.16,.85,.22,1), opacity 3s ease;
-  z-index:2; height:88vh; display:flex; align-items:flex-end; justify-content:center; will-change:transform,opacity;
+  z-index:2; height:70%; display:flex; align-items:flex-end; justify-content:center; will-change:transform,opacity;
 }
 /* Panimulang estado ng "paglalakad papalapit": maliit at malabo, tapos
    lalaki at mag-fade-in nang mabagal (tingnan ang loadCase sa booth.js). */
-.scene-full .char-stage.walk-in { transform:translateX(-50%) scale(.32); opacity:0; }
-.scene-full .char-stage.no-anim { transition:none !important; }
-.scene-full .character { position:relative; height:100%; width:auto; }
-.scene-full .char-img { height:100% !important; width:auto !important; max-width:none !important; }
-.scene-full .char-ph svg { height:80%; width:auto; }
-.scene-full .scene-fg {
-  position:absolute; left:0; right:0; bottom:0; width:100%; z-index:3; pointer-events:none;
-  filter:drop-shadow(0 -6px 12px rgba(0,0,0,.18));
+.scene-stage .char-stage.walk-in { transform:translateX(-50%) scale(.32); opacity:0; }
+.scene-stage .char-stage.no-anim { transition:none !important; }
+.scene-stage .character { position:relative; height:100%; width:auto; }
+.scene-stage .char-img { height:100% !important; width:auto !important; max-width:none !important; }
+.scene-stage .char-ph svg { height:80%; width:auto; }
+
+/* ---------- Monitor: profile ng bata (larawan, pangalan, edad) ---------- */
+/* Bahagi na ng fg_wooden_desk.png mismo ang mesa/monitor/papel/lapisan
+   (iisang larawan na lang) -- dito lang inilalagay ang overlay (larawan,
+   pangalan, edad) sa ibabaw ng asul na screen ng monitor na nasa larawan.
+   Ang mga numero dito ay SINUKAT mismo sa larawan (hindi hula): nasa
+   x 5.5%-22.2%, y 35.9%-67.3% ang screen, gitna sa (13.9%, 51.6%), at
+   nakahilig ito ng -20.4deg (mas mataas ang kanang gilid). */
+.monitor-screen {
+  position:absolute; z-index:4; left:13.9%; top:51.6%; width:16.7%; height:19%;
+  transform:translate(-50%,-50%) rotate(-10deg);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4%;
+  color:#fff; text-align:center; pointer-events:none;
+}
+/* height (hindi width) ang batayan ng bilog para siguradong kasya pa ang
+   pangalan/edad sa ilalim nito sa loob ng screen. */
+.monitor-avatar {
+  height:46%; aspect-ratio:1/1; border-radius:50%; overflow:hidden;
+  background-color:#1b3a63; background-size:220% auto; background-position:top center; background-repeat:no-repeat;
+  border:2px solid rgba(255,255,255,.9);
+}
+.monitor-info { line-height:1.25; max-width:100%; }
+.monitor-name { font-weight:800; font-size:clamp(11px,1.15vw,22px); }
+.monitor-age { font-size:clamp(9px,0.9vw,17px); opacity:.92; }
+
+/* ---------- Speech bubble: dito napupunta ang dialogue ng bata ---------- */
+/* Sumusukat ito sa AKTWAL na haba ng teksto (width:max-content + max-width
+   na hangganan), kaya maliit ang bubble kapag maikli ang sinasabi at
+   lumalaki lang kung kailangan. Naka-angkla ang IBABA nito (bottom:47%)
+   sa halip na ang itaas, kaya nananatili sa iisang lugar ang buntot
+   (nakaturo sa bata) habang pataas na lumalaki ang kahon kapag mahaba ang
+   teksto. Nakatago ito hangga't walang sinasabi -- tingnan ang
+   showBubble() sa booth.js. */
+.speech-bubble {
+  position:absolute; z-index:5; left:57%; bottom:64%;
+  max-width:30%;
+  pointer-events:none;
+  opacity:0; visibility:hidden;
+}
+.speech-bubble.is-on {
+  opacity:1; visibility:visible;
+  animation:bubble-pop .3s cubic-bezier(.34,1.56,.64,1) both;
+}
+/* Lumulundag palabas mula sa gawing buntot, para parang galing sa bata */
+@keyframes bubble-pop {
+  from { opacity:0; transform:translateY(10px) scale(.86); }
+  to   { opacity:1; transform:none; }
+}
+.speech-bubble.is-on { transform-origin:12% 100%; }
+@media (prefers-reduced-motion:reduce) {
+  .speech-bubble.is-on { animation:none; }
+}
+
+.bubble-box {
+  background:#fff; border:0.30vw solid #14110f; border-radius:2.1vw;
+  padding:1.15vw 1.5vw;
+  width:max-content; max-width:100%;
+  box-shadow:0 0.5vw 1.2vw rgba(0,0,0,.16);
+}
+.bubble-text {
+  text-align:center; text-wrap:balance; color:#2b2b2b; font-weight:600;
+  font-size:clamp(13px,1.25vw,24px); line-height:1.35;
+}
+/* Ang hindi pa "na-type" na bahagi ay naroon na sa DOM pero invisible --
+   kaya hindi nangangatog/lumalaki ang bubble habang tumatakbo ang typing
+   effect: sakto na agad ang sukat nito sa buong pangungusap. */
+.type-rest { visibility:hidden; }
+
+.bubble-tail {
+  position:absolute; left:7%; top:100%;
+  width:3.4vw; height:auto; margin-top:-0.42vw;
 }
 
 /* Iisang column ang subtitle + mga buton sa ilalim, para hindi sila
@@ -343,25 +492,30 @@ body.booth-body--full { overflow:hidden; background:#000; }
   display:flex; flex-wrap:wrap; gap:10px; justify-content:center; max-width:100%; margin-top:0;
 }
 
-/* Sarado na folder, nakalatag sa mesa -- clickable prop */
+/* Folder at telepono -- clickable props, nakapatong sa ibabaw ng mesa.
+   Naka-percent na sila sa entablado (hindi vw/vh) at PAREHONG bottom:16%
+   para talagang magkapantay sila sa iisang linya sa mesa. Nagsisimula ang
+   ibabaw ng mesa sa y=64.8% ng entablado, at ang madilim na gilid nito sa
+   ~88%, kaya nasa loob ng ibabaw ang mga ito. */
 .folder-prop {
-  position:absolute; z-index:8; left:3vw; bottom:4vh; width:min(360px,27vw); height:auto;
+  position:absolute; z-index:8; left:37%; bottom:14.8%; width:26%; height:auto;
+  transform:translateX(-50%);
   cursor:pointer; display:block;
   filter:drop-shadow(0 10px 14px rgba(0,0,0,.35));
   transition:transform .18s cubic-bezier(.22,.9,.3,1), filter .18s ease;
 }
-.folder-prop:hover { transform:translateY(-14px) scale(1.05); filter:drop-shadow(0 22px 24px rgba(0,0,0,.4)); }
-.folder-prop:active { transform:translateY(-6px) scale(1.01); }
+.folder-prop:hover { transform:translateX(-50%) translateY(-14px) scale(1.05); filter:drop-shadow(0 22px 24px rgba(0,0,0,.4)); }
+.folder-prop:active { transform:translateX(-50%) translateY(-6px) scale(1.01); }
 
-/* Telepono, nakasabit ang hawakan -- clickable prop */
 .phone-prop {
-  position:absolute; z-index:8; right:3vw; bottom:4vh; width:min(300px,23vw); height:auto;
+  position:absolute; z-index:8; left:63%; right:auto; bottom:16.6%; width:21%; height:auto;
+  transform:translateX(-50%);
   cursor:pointer; display:block;
   filter:drop-shadow(0 10px 14px rgba(0,0,0,.35));
   transition:transform .18s cubic-bezier(.22,.9,.3,1), filter .18s ease;
 }
-.phone-prop:hover { transform:translateY(-14px) scale(1.05); filter:drop-shadow(0 22px 24px rgba(0,0,0,.4)); }
-.phone-prop:active { transform:translateY(-6px) scale(1.01); }
+.phone-prop:hover { transform:translateX(-50%) translateY(-14px) scale(1.05); filter:drop-shadow(0 22px 24px rgba(0,0,0,.4)); }
+.phone-prop:active { transform:translateX(-50%) translateY(-6px) scale(1.01); }
 
 /* Bumubukas na folder pop-up, gitna ng screen */
 .folder-overlay {
@@ -372,12 +526,43 @@ body.booth-body--full { overflow:hidden; background:#000; }
 .folder-sheet { position:relative; width:min(1000px,94vw); animation:folderIn .28s cubic-bezier(.22,.9,.3,1); }
 @keyframes folderIn { from{opacity:0;transform:scale(.92) translateY(14px);} to{opacity:1;transform:none;} }
 .folder-open-img { display:block; width:100%; height:auto; filter:drop-shadow(0 22px 40px rgba(0,0,0,.4)); pointer-events:none; }
+
+/* Ang laman (case no, pangalan/edad, salaysay, ebidensya, RA 9344 note) ay
+   nakapatong lahat sa IISANG papel -- sinukat ang box na ito para tumugma
+   sa likod/mas-tuwid na papel na nakaguhit sa folder_open.png (hindi ang
+   harap na nakahilig na blangkong papel), kaya "nasa papel" talaga ang
+   teksto, hindi lang nakapatong sa buong folder. */
 .folder-content {
-  position:absolute; left:9%; right:9%; top:15%; bottom:12%;
-  overflow-y:auto; padding:0 1.5%; display:flex; flex-direction:column; gap:12px;
+  position:absolute; left:38%; right:37.5%; top:17%; bottom:19%;
+  overflow-y:auto; padding:2% 3%; display:flex; flex-direction:column; gap:7px;
+  font-family:Georgia,'Times New Roman',serif; color:#3a352b;
 }
-.folder-content::-webkit-scrollbar { width:8px; }
+.folder-content::-webkit-scrollbar { width:6px; }
 .folder-content::-webkit-scrollbar-thumb { background:rgba(0,0,0,.15); border-radius:8px; }
+
+.paper-head { text-align:center; }
+.paper-caseno { font-size:clamp(13px,1.6vw,20px); font-weight:700; letter-spacing:1px; }
+.paper-casetitle { font-size:clamp(10px,1.15vw,14px); font-style:italic; color:#6b6152; margin-top:2px; }
+
+.paper-childrow {
+  text-align:center; font-size:clamp(10px,1.15vw,14px); font-weight:600;
+  color:#4a4437; padding-bottom:4px; border-bottom:1px dashed #c9bd9e;
+}
+
+.paper-section-label {
+  font-size:clamp(9px,1vw,12px); font-weight:700; letter-spacing:1.5px;
+  color:#8a7a58; margin-top:2px;
+}
+.paper-statement, .paper-evidence .evi-item {
+  font-size:clamp(11px,1.25vw,15px); line-height:1.5;
+}
+.paper-evidence { display:flex; flex-direction:column; gap:6px; }
+.paper-evidence .evi-item b { font-weight:700; }
+
+.paper-law {
+  margin-top:auto; padding-top:10px;
+  font-size:clamp(9px,1vw,12px); font-style:italic; color:#948a76; line-height:1.4;
+}
 
 .side-panel {
   position:fixed; top:0; right:0; height:100vh; height:100dvh; width:380px; max-width:92vw;
@@ -393,31 +578,108 @@ body.booth-body--full { overflow:hidden; background:#000; }
 .panel-title { font-weight:800; font-size:19px; margin-bottom:16px; }
 .side-panel .case-card, .side-panel .statement-paper, .side-panel .law-card { margin-bottom:14px; }
 
-/* Tumatawag na telepono, gitna ng screen -- hiwalay sa dokumento folder */
+/* Tumatawag na telepono, gitna ng screen -- hiwalay sa dokumento folder.
+   Mas malalim na blur/dim ang backdrop (parang may "focus" sa tawag), at
+   ang laman mismo ay nasa loob ng isang frosted-glass na card (translucent,
+   blurred background, malambot na border) sa halip na direktang nakalutang
+   sa itim na overlay -- doon din lumaki ang larawan ng telepono. */
 .phone-overlay {
   position:fixed; inset:0; z-index:40; display:flex; align-items:center; justify-content:center;
-  background:rgba(20,20,30,.6); padding:24px;
+  background:rgba(8,9,16,.72); backdrop-filter:blur(7px); -webkit-backdrop-filter:blur(7px);
+  padding:24px;
 }
 .phone-overlay.hidden { display:none; }
 .phone-sheet {
-  position:relative; width:min(460px,88vw); display:flex; flex-direction:column; align-items:center; gap:16px;
-  animation:folderIn .28s cubic-bezier(.22,.9,.3,1);
+  position:relative; width:min(540px,92vw);
+  animation:folderIn .32s cubic-bezier(.22,.9,.3,1);
 }
-.phone-detached-img { width:68%; height:auto; display:block; filter:drop-shadow(0 18px 30px rgba(0,0,0,.45)); pointer-events:none; }
+.phone-card {
+  display:flex; flex-direction:column; align-items:center; gap:14px;
+  background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.07));
+  backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.28); border-radius:28px;
+  padding:30px 26px 26px;
+  box-shadow:0 26px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(255,255,255,.3);
+}
+
+.phone-status {
+  display:flex; align-items:center; gap:8px; flex-wrap:wrap; justify-content:center;
+  color:#fff; font-size:12px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; opacity:.9;
+}
+.phone-status-dot {
+  width:9px; height:9px; border-radius:50%; background:#57cc86; flex:0 0 auto;
+  animation:phone-dot-pulse 1.4s infinite;
+}
+@keyframes phone-dot-pulse {
+  0% { box-shadow:0 0 0 0 rgba(87,204,134,.55); }
+  70% { box-shadow:0 0 0 9px rgba(87,204,134,0); }
+  100% { box-shadow:0 0 0 0 rgba(87,204,134,0); }
+}
+.phone-status-target { color:#ffd77a; letter-spacing:.3px; text-transform:none; font-weight:700; }
+
+/* Malabnaw na "ripple" na bilog sa likod ng telepono, parang tumutunog.
+   Hindi naka-fixed na % ng buong card ang wrapper -- sumusukat ito sa
+   MISMONG larawan (fit-content), kaya nakasentro ang ripple sa likod ng
+   telepono anuman ang tunay na aspect ratio ng asset, at hindi ito
+   umaapaw sa card kahit gaano ka-haba/pantay ang larawan. */
+.phone-img-wrap {
+  position:relative; display:flex; align-items:center; justify-content:center;
+  width:fit-content; max-width:100%; padding:4px 0;
+}
+.phone-img-wrap::before, .phone-img-wrap::after {
+  content:""; position:absolute; width:68%; aspect-ratio:1/1; border-radius:50%;
+  background:radial-gradient(circle, rgba(255,255,255,.4), rgba(255,255,255,0) 68%);
+  animation:phone-ring-pulse 2.1s ease-out infinite;
+}
+.phone-img-wrap::after { animation-delay:1.05s; }
+@keyframes phone-ring-pulse {
+  0% { transform:scale(.65); opacity:.8; }
+  100% { transform:scale(1.4); opacity:0; }
+}
+.phone-detached-img {
+  position:relative; display:block;
+  width:auto; max-width:min(60vw,320px); max-height:40vh; height:auto;
+  filter:drop-shadow(0 22px 36px rgba(0,0,0,.5)); pointer-events:none;
+}
+
 .phone-subtitle {
   color:#fff; text-align:center; font-size:17px; font-weight:600; line-height:1.55; min-height:52px;
   text-shadow:0 2px 6px rgba(0,0,0,.6), 0 0 14px rgba(0,0,0,.4);
 }
-.phone-controls { display:flex; flex-direction:column; gap:8px; width:100%; }
+.phone-controls {
+  display:flex; flex-direction:column; gap:8px; width:100%;
+  max-height:min(30vh,220px); overflow-y:auto; padding:2px 2px 2px 0;
+}
+.phone-controls::-webkit-scrollbar { width:6px; }
+.phone-controls::-webkit-scrollbar-thumb { background:rgba(255,255,255,.35); border-radius:8px; }
 .phone-controls p { color:#fff; opacity:.85; font-size:14px; line-height:1.5; text-align:center; text-shadow:0 2px 6px rgba(0,0,0,.5); }
-.panel-close--phone { top:-14px; right:-14px; z-index:2; background:#fff; box-shadow:0 4px 12px rgba(0,0,0,.3); }
+.phone-controls .q-btn {
+  background:rgba(255,255,255,.92); box-shadow:0 6px 16px rgba(0,0,0,.3);
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.phone-controls .q-btn:hover { background:#fff; transform:translateY(-2px); box-shadow:0 10px 20px rgba(0,0,0,.35); }
+.phone-controls .q-btn.asked { background:rgba(255,255,255,.55); }
+
+.panel-close--phone {
+  top:-16px; right:-16px; z-index:2; background:#fff; box-shadow:0 6px 16px rgba(0,0,0,.35);
+  transition:transform .15s ease;
+}
+.panel-close--phone:hover { transform:scale(1.08); }
 
 @media (max-width:760px) {
-  .folder-prop { width:40vw; bottom:15vh; }
-  .phone-prop { width:34vw; bottom:15vh; }
-  .folder-content { left:7%; right:7%; top:13%; bottom:10%; gap:8px; }
-  .scene-full .char-stage { height:66vh; }
-  .scene-bottom { bottom:24vh; }
+  /* Sa makikitid/portrait na screen, hindi na "cover" ang entablado (kung
+     hindi, ang gitna lang ng eksena ang makikita -- mawawala ang monitor at
+     ang mga papel sa gilid). Dito, buong 16:9 na eksena ang ipinapakita,
+     naka-fit sa lapad, at nasa itaas na bahagi ng screen -- itim na banda
+     ang natitira sa ibaba, doon inilalagay ang mga buton. Dahil percent ng
+     entablado ang lahat ng overlay, kusa na silang sumusunod -- walang
+     hiwalay na mobile na posisyon ang kailangan. */
+  .scene-stage {
+    top:34%; left:50%; transform:translate(-50%,-50%);
+    width:100vw; height:calc(100vw * 9 / 16);
+  }
+  .scene-bottom { bottom:6vh; }
+  .folder-content { left:35%; right:35%; top:15%; bottom:17%; gap:5px; padding:2% 2%; }
 }
 
 /* ---------- Art check page ---------- */

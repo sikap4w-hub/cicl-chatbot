@@ -5,13 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Laro - Kaalaman at Karapatan</title>
   <link rel="icon" type="image/png" href="/static/art/logo.png">
-  <link rel="stylesheet" href="/static/style.css?v=5">
+  <link rel="stylesheet" href="/static/style.css?v=16">
 </head>
 <body class="booth-body booth-body--full">
   <div class="booth booth--full">
     <div class="scene-full">
-      <div class="scene-bg"></div>
+      <!-- .scene-stage = fixed na 16:9 na "entablado". Pareho ang sukat nito
+           at ng mga larawan (bg_barangay_hallway.jpg at fg_wooden_desk.png,
+           parehong 16:9), kaya ang lahat ng nakapatong dito (monitor overlay,
+           bata, speech bubble, folder, telepono) ay puwedeng ilagay sa
+           PERCENT ng entablado -- at laging tugma sa mismong iginuhit na
+           larawan, kahit anong laki o hugis ng browser window. Dati kasi,
+           naka-sukat sa lapad ng window ang mga larawan pero naka-vw/vh ang
+           mga overlay, kaya nagkakahiwalay sila kapag hindi 16:9 ang window
+           (kaya "mataas" ang mesa at hindi tugma ang profile sa monitor). -->
+      <div class="scene-stage">
+        <div class="scene-bg"></div>
 
+        <div id="char-stage" class="char-stage">
+          <div id="character" class="character"></div>
+        </div>
+
+        <!-- Hindi na larawan ang bubble. Ang dating speech_bubble.png ay
+             iisang tuloy-tuloy na guhit (magkadikit ang katawan at ang
+             buntot), kaya hindi ito puwedeng i-unat ayon sa haba ng teksto
+             nang hindi napipilipit. Dito, CSS box na ang katawan (kaya
+             sumusukat ito sa mismong teksto) at SVG naman ang buntot. -->
+        <div id="speech-bubble" class="speech-bubble">
+          <div class="bubble-box">
+            <div id="dialogue" class="bubble-text"></div>
+          </div>
+          <svg class="bubble-tail" viewBox="0 0 70 58" aria-hidden="true" focusable="false">
+            <!-- puting fill muna (tinatakpan nito ang bahagi ng border ng
+                 kahon sa itaas, kaya walang guhit na tumatawid sa bibig ng
+                 buntot), tapos ang dalawang gilid lang ang may stroke -->
+            <path d="M62 2 C58 24, 40 42, 6 54 C26 36, 30 18, 26 2 Z" fill="#fff"/>
+            <path d="M62 2 C58 24, 40 42, 6 54 C26 36, 30 18, 26 2"
+                  fill="none" stroke="#14110f" stroke-width="5"
+                  stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+
+        <!-- Ang monitor, papel, at lapisan ay bahagi na ng fg_wooden_desk.png
+             mismo (iisang larawan na lang, hindi na hiwalay na mga PNG).
+             Dito lang inilalagay ang profile overlay (larawan/pangalan/edad)
+             sa ibabaw ng screen ng monitor na nasa larawan. -->
+        <img class="scene-fg" src="/static/art/fg_wooden_desk.png?v=4" alt="">
+
+        <div class="monitor-screen">
+          <div class="monitor-avatar" id="monitor-avatar"></div>
+          <div class="monitor-info">
+            <div class="monitor-name" id="monitor-name">--</div>
+            <div class="monitor-age" id="monitor-age"></div>
+          </div>
+        </div>
+
+        <img class="folder-prop" id="folder-btn" src="/static/art/folder_closed.png" alt="Mga dokumento ng kaso"
+          data-tl-title="Mga dokumento ng kaso" data-en-title="Case documents" title="Mga dokumento ng kaso">
+
+        <img class="phone-prop" id="phone-btn" src="/static/art/phone_attached.png" alt="Tumawag sa magulang"
+          data-tl-title="Tumawag sa magulang" data-en-title="Call the parent" title="Tumawag sa magulang">
+      </div>
+
+      <!-- Naka-angkla sa window (hindi sa entablado) para hindi maputol -->
       <button class="booth-exit booth-exit--float" onclick="location.href='/menu'"><span data-tl="&lsaquo; Umalis" data-en="&lsaquo; Exit">&lsaquo; Umalis</span></button>
 
       <div class="booth-hud booth-hud--float">
@@ -22,47 +78,63 @@
         </div>
       </div>
 
-      <div id="char-stage" class="char-stage">
-        <div id="character" class="character"></div>
-      </div>
-
-      <img class="scene-fg" src="/static/art/fg_wooden_desk.png" alt="">
-
       <div class="scene-bottom">
-        <div id="dialogue" class="subtitle"></div>
         <div class="booth-actions scene-actions" id="controls"></div>
       </div>
-
-      <img class="folder-prop" id="folder-btn" src="/static/art/folder_closed.png" alt="Mga dokumento ng kaso"
-        data-tl-title="Mga dokumento ng kaso" data-en-title="Case documents" title="Mga dokumento ng kaso">
-
-      <img class="phone-prop" id="phone-btn" src="/static/art/phone_attached.png" alt="Tumawag sa magulang"
-        data-tl-title="Tumawag sa magulang" data-en-title="Call the parent" title="Tumawag sa magulang">
     </div>
   </div>
 
-  <!-- Panel ng mga dokumento ng kaso: bumubukas na folder sa gitna ng screen -->
+  <!-- Panel ng mga dokumento ng kaso: bumubukas na folder sa gitna ng screen.
+       Ang lahat ng laman (case no, pangalan/edad ng bata, salaysay, ebidensya)
+       ay nakapatong ngayon sa IISANG papel -- ang papel na nasa likod, hindi
+       ang unan/harap na blangko na papel -- tumutugma sa reference mockup.
+       Ang .folder-content ay naka-position sa % ng mismong larawan ng
+       bukas na folder (sinukat sa aktwal na drawing ng papel), kaya
+       nananatiling "nakapatong sa papel" ang teksto anumang laki ng screen. -->
   <div id="docs-panel" class="folder-overlay hidden">
     <div class="folder-sheet">
-      <img class="folder-open-img" src="/static/art/folder_open.png" alt="">
+      <img class="folder-open-img" src="/static/art/folder_open.png?v=1" alt="">
       <button class="panel-close panel-close--folder" id="docs-close">&times;</button>
       <div class="folder-content">
-        <div class="case-card"><div class="case-no" id="case-no">--</div><div class="case-label">KASO</div></div>
-        <div class="statement-paper" id="statement">Salaysay ng bata...</div>
-        <div class="law-card"><b>RA 9344 gabay:</b> 15 pababa: intervention. 16-17 na may discernment: diversion. Layunin: tulong, hindi parusa.</div>
-        <div class="side-label">EBIDENSYA</div>
-        <div id="evidence-list"></div>
+        <div class="paper-head">
+          <div class="paper-caseno" id="case-no">--</div>
+          <div class="paper-casetitle" id="case-title">--</div>
+        </div>
+        <div class="paper-childrow">
+          <span id="child-name">--</span> &middot; <span id="child-age"></span> &middot;
+          <span data-tl="Bukas na Kaso" data-en="Open Case">Bukas na Kaso</span>
+        </div>
+
+        <div class="paper-section-label" data-tl="SALAYSAY" data-en="STATEMENT">SALAYSAY</div>
+        <div class="paper-statement" id="statement">Salaysay ng bata...</div>
+
+        <div class="paper-section-label" data-tl="EBIDENSYA" data-en="EVIDENCE">EBIDENSYA</div>
+        <div id="evidence-list" class="paper-evidence"></div>
+
+        <div class="paper-law" data-tl="Ayon sa RA 9344: kung 15 taong gulang pababa ang bata, dadaan siya sa intervention. Kung 16-17 taong gulang at alam niyang mali ang ginawa niya (may discernment), dadaan siya sa diversion. Layunin nito ay tulungan ang bata, hindi parusahan." data-en="Under RA 9344: if the child is 15 or younger, they go through intervention. If they are 16-17 and understood that what they did was wrong (discernment), they go through diversion. The goal is to help the child, not to punish them.">Ayon sa RA 9344: kung 15 taong gulang pababa ang bata, dadaan siya sa intervention. Kung 16-17 taong gulang at alam niyang mali ang ginawa niya (may discernment), dadaan siya sa diversion. Layunin nito ay tulungan ang bata, hindi parusahan.</div>
       </div>
     </div>
   </div>
 
-  <!-- Panel ng tawag sa magulang: naka-angat na telepono sa gitna ng screen -->
+  <!-- Panel ng tawag sa magulang: naka-angat na telepono sa gitna ng screen.
+       Nasa loob ng isang "glass" na card (translucent, blurred background)
+       ang buong laman, mas malaki na ang larawan ng telepono, at may
+       pulsing na "tumatawag" indicator sa itaas para mas buhay. -->
   <div id="call-panel" class="phone-overlay hidden">
     <div class="phone-sheet">
       <button class="panel-close panel-close--phone" id="call-close">&times;</button>
-      <img class="phone-detached-img" src="/static/art/phone_detached.png" alt="">
-      <div id="call-dialogue" class="phone-subtitle">Tumatawag...</div>
-      <div id="call-controls" class="phone-controls"></div>
+      <div class="phone-card">
+        <div class="phone-status">
+          <span class="phone-status-dot"></span>
+          <span data-tl="Tumatawag" data-en="Calling">Tumatawag</span>
+          <span id="call-target" class="phone-status-target"></span>
+        </div>
+        <div class="phone-img-wrap">
+          <img class="phone-detached-img" src="/static/art/phone_detached.png" alt="">
+        </div>
+        <div id="call-dialogue" class="phone-subtitle">Tumatawag...</div>
+        <div id="call-controls" class="phone-controls"></div>
+      </div>
     </div>
   </div>
 
@@ -84,6 +156,6 @@
 
   <script>window.CASES = {{ cases_json|safe }};</script>
   <script src="/static/lang.js?v=2"></script>
-  <script src="/static/booth.js?v=3"></script>
+  <script src="/static/booth.js?v=10"></script>
 </body>
 </html>

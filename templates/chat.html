@@ -6,6 +6,33 @@
     <div class="chat-title" data-tl="Makipag-usap" data-en="Chat">Makipag-usap</div>
     <div class="chat-status"><span class="dot"></span> KARAPATAN Assistant</div>
   </div>
+  <!-- Opsyonal na "Pilot Mode" -- para lang sa CONSENTING ADULT PROXY
+       speakers na sinasadyang gumagamit ng chat para makatulong
+       makapag-recording ng bagong STT training data (tingnan ang
+       pilot_data.py para sa buong paliwanag). Naka-OFF ito bilang
+       default; nangangailangan ng consent screen bago ito ma-activate. -->
+  <button id="pilot-toggle" class="pilot-toggle" type="button"
+    data-tl-title="Opsyonal: para sa consenting adult proxy speakers lang, para sa STT research data collection" data-en-title="Optional: for consenting adult proxy speakers only, for STT research data collection"
+    title="Opsyonal: para sa consenting adult proxy speakers lang">🔬 Pilot Mode</button>
+</div>
+
+<div id="pilot-consent-modal" class="modal-overlay" hidden>
+  <div class="modal-box">
+    <div class="modal-title" data-tl="Pahintulot: Pilot Data Collection" data-en="Consent: Pilot Data Collection">Pahintulot: Pilot Data Collection</div>
+    <div class="modal-body"
+      data-tl-html="Kapag pinagana mo ang Pilot Mode, ang mga audio na ire-record mo gamit ang mic button dito, kasama ang FINAL na bersyon ng tanong na aktwal mong ipapadala (pagkatapos mo itong baguhin/kumpirmahin), ay ise-save para gamitin sa pagpapahusay ng speech-to-text na bahagi ng pag-aaral na ito (isang PLM CISTM capstone thesis).<br><br>&bull; Walang pangalan, email, o ibang personal na impormasyon ang kinukuha -- random na session ID lang.<br>&bull; Ang pagsali ay BOLUNTARYO -- maaari mong i-off ang Pilot Mode anumang oras.<br>&bull; Ang mga na-save na recording ay muna susuriin bago isama sa aktwal na training set.<br><br><strong>Ito ay PARA SA MGA TAGA-SUBOK (proxy speakers) lamang ng pag-aaral -- HINDI ito para sa aktwal na batang CICL na gumagamit ng sistemang ito.</strong>"
+      data-en-html="When you turn on Pilot Mode, the audio you record using the mic button here, along with the FINAL version of the question you actually send (after you edit/confirm it), will be saved to help improve the speech-to-text part of this study (a PLM CISTM capstone thesis).<br><br>&bull; No name, email, or other personal information is collected -- only a random session ID.<br>&bull; Participation is VOLUNTARY -- you can turn off Pilot Mode at any time.<br>&bull; Saved recordings are reviewed before being added to the actual training set.<br><br><strong>This is for study PROXY SPEAKERS only -- it is NOT meant for an actual CICL child using this system.</strong>">
+      Kapag pinagana mo ang Pilot Mode, ang mga audio na ire-record mo gamit ang mic button dito, kasama ang FINAL na bersyon ng tanong na aktwal mong ipapadala (pagkatapos mo itong baguhin/kumpirmahin), ay ise-save para gamitin sa pagpapahusay ng speech-to-text na bahagi ng pag-aaral na ito (isang PLM CISTM capstone thesis).<br><br>&bull; Walang pangalan, email, o ibang personal na impormasyon ang kinukuha -- random na session ID lang.<br>&bull; Ang pagsali ay BOLUNTARYO -- maaari mong i-off ang Pilot Mode anumang oras.<br>&bull; Ang mga na-save na recording ay muna susuriin bago isama sa aktwal na training set.<br><br><strong>Ito ay PARA SA MGA TAGA-SUBOK (proxy speakers) lamang ng pag-aaral -- HINDI ito para sa aktwal na batang CICL na gumagamit ng sistemang ito.</strong>
+    </div>
+    <label class="modal-check">
+      <input type="checkbox" id="pilot-consent-check">
+      <span data-tl="Kumpirma ko na ako ay 18 taong gulang pataas, isa akong PROXY SPEAKER lang (hindi aktwal na batang CICL), at nauunawaan ko ang paggamit ng datos na ito." data-en="I confirm I am 18 years old or older, I am acting only as a PROXY SPEAKER (not an actual CICL youth), and I understand how this data will be used.">Kumpirma ko na ako ay 18 taong gulang pataas, isa akong PROXY SPEAKER lang (hindi aktwal na batang CICL), at nauunawaan ko ang paggamit ng datos na ito.</span>
+    </label>
+    <div class="modal-actions">
+      <button id="pilot-consent-decline" class="btn btn--ghost" type="button" data-tl="Tanggihan" data-en="Decline">Tanggihan</button>
+      <button id="pilot-consent-accept" class="btn btn--purple" type="button" disabled data-tl="Sumasang-ayon Ako" data-en="I Agree">Sumasang-ayon Ako</button>
+    </div>
+  </div>
 </div>
 
 <div class="chat-body">
@@ -25,8 +52,8 @@
         data-tl-placeholder="I-type ang iyong tanong..." data-en-placeholder="Type your question..."
         placeholder="I-type ang iyong tanong...">
       <button id="mic-btn" class="mic-btn"
-        data-tl-title="Speech input (ginagawa pa)" data-en-title="Speech input (coming soon)"
-        title="Speech input (ginagawa pa)">&#127908;</button>
+        data-tl-title="Speech input" data-en-title="Speech input"
+        title="Speech input">&#127908;</button>
       <button id="send-btn" class="btn btn--purple send-btn"><span data-tl="&#10148; Ipadala" data-en="&#10148; Send">&#10148; Ipadala</span></button>
     </div>
   </div>

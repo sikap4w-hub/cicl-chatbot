@@ -9,10 +9,16 @@
   const evidenceEl = document.getElementById("evidence-list");
   const statementEl = document.getElementById("statement");
   const caseNoEl = document.getElementById("case-no");
+  const caseTitleEl = document.getElementById("case-title");
+  const childNameEl = document.getElementById("child-name");
+  const childAgeEl = document.getElementById("child-age");
   const progressEl = document.getElementById("progress");
   const scoreEl = document.getElementById("score");
   const modal = document.getElementById("modal");
   const modalCard = document.getElementById("modal-card");
+  const monitorAvatarEl = document.getElementById("monitor-avatar");
+  const monitorNameEl = document.getElementById("monitor-name");
+  const monitorAgeEl = document.getElementById("monitor-age");
 
   const docsPanel = document.getElementById("docs-panel");
   const docsClose = document.getElementById("docs-close");
@@ -21,6 +27,7 @@
   const callClose = document.getElementById("call-close");
   const callDialogueEl = document.getElementById("call-dialogue");
   const callControlsEl = document.getElementById("call-controls");
+  const callTargetEl = document.getElementById("call-target");
 
   let idx = 0, score = 0, currentCase = null, started = false;
 
@@ -105,6 +112,9 @@
       readingRetry: "Tignan pa natin ang ebidensya. Subukan muli.",
       goodDeed: "Mabuting Gawa",
       lessonResult: "Pang-edukasyon na Resulta",
+      sugarcoatTitle: "🔍 Salita laban sa Ginawa",
+      sugarcoatSaid: "Sinabi niya:",
+      sugarcoatTruth: "Pero ang totoo:",
       truthLabel: "Ang totoo:",
       pathLabel: "Tamang landas:",
       reminderTitle: "🛡 Mahalagang Tandaan",
@@ -118,7 +128,8 @@
       noActiveCase: "Wala pang aktibong kaso.",
       callGreeting: "Kumusta po. Ito po ang barangay tanggapan, gusto ko lang po itanong tungkol sa anak niyo.",
       noReadyCases: "Walang handang kaso",
-      noReadyCasesNote: "Magdagdag ng ready na kaso sa cases.json."
+      noReadyCasesNote: "Magdagdag ng ready na kaso sa cases.json.",
+      ageLabel: function (n) { return "Edad: " + n; }
     },
     en: {
       caseOf: function (n, total) { return "Case " + n + " of " + total; },
@@ -126,14 +137,17 @@
       askQuestions: "Ask questions ›",
       readyToDecide: "I'm ready to decide ›",
       decidePrompt: "Based on the story and the evidence, what's your call?",
-      truthful: "Nagsasabi ng Totoo",
-      mismatch: "Hindi Tugma ang Kwento",
+      truthful: "Nagsasabi ng Totoo (Telling the Truth)",
+      mismatch: "Hindi Tugma ang Kwento (Story Doesn't Match)",
       hintInspect: "Something still doesn't match the evidence. Let's look closer.",
       hintClear: "The story actually looks clear based on the evidence. Let's go back.",
       readingPrompt: "What actually happened, based on the evidence?",
       readingRetry: "Let's look at the evidence again. Try once more.",
       goodDeed: "Good Deed",
       lessonResult: "Learning Outcome",
+      sugarcoatTitle: "🔍 Words vs. What Happened",
+      sugarcoatSaid: "What they said:",
+      sugarcoatTruth: "But the truth is:",
       truthLabel: "What actually happened:",
       pathLabel: "The right path:",
       reminderTitle: "🛡 Important Reminder",
@@ -145,9 +159,10 @@
       backHome: "Back to Home",
       noParentInfo: "No information from the parent is available yet for this case.",
       noActiveCase: "No active case yet.",
-      callGreeting: "Kumusta po. Ito po ang barangay tanggapan, gusto ko lang po itanong tungkol sa anak niyo.",
+      callGreeting: "Hello po. This is the barangay office calling — I'd just like to ask a few things about your child.",
       noReadyCases: "No case is ready yet",
-      noReadyCasesNote: "Add a case with status \"ready\" in cases.json."
+      noReadyCasesNote: "Add a case with status \"ready\" in cases.json.",
+      ageLabel: function (n) { return "Age: " + n; }
     }
   };
   function t(key) {
@@ -169,6 +184,23 @@
   // Dito ibinabagay ang isa sa isa.
   const MOOD_FILE = { neutral: "neutral", kabado: "nervous", malungkot: "sad", ginhawa: "relieved" };
   function artSrc(key, mood) { return "/static/art/" + key + "_" + (MOOD_FILE[mood] || mood) + ".png"; }
+
+  // Profile ng kasalukuyang bata sa "monitor" -- larawan (zinoom-in na crop
+  // ng neutral-mood art, parang ID/video-call photo), pangalan, at edad.
+  // Kinukuha mula sa cases.json (c.bata.name / c.bata.age).
+  function updateMonitor(c) {
+    if (!monitorAvatarEl || !monitorNameEl || !monitorAgeEl) return;
+    if (!c || !c.bata) {
+      monitorAvatarEl.style.backgroundImage = "";
+      monitorNameEl.textContent = "--";
+      monitorAgeEl.textContent = "";
+      return;
+    }
+    const key = c.bata.art;
+    monitorAvatarEl.style.backgroundImage = key ? "url('" + artSrc(key, "neutral") + "')" : "";
+    monitorNameEl.textContent = c.bata.name || c.bata.label || "--";
+    monitorAgeEl.textContent = (typeof c.bata.age === "number") ? t("ageLabel")(c.bata.age) : "";
+  }
 
   // Ihanda ang lahat ng mood ng isang kaso bago pa ito lumabas sa screen.
   function preloadCase(c) {
@@ -271,14 +303,45 @@
   // ============================================================
   // DIALOGUE / UI
   // ============================================================
+  // Ang speech bubble ay lumalabas LANG kapag may aktwal na sinasabi ang
+  // bata. Dati, laging nakalutang ito kahit blangko (kahit habang nasa
+  // instructions modal pa) -- mukhang kalat. Nakatago ito sa CSS bilang
+  // default, at dito lang ito binubuksan/isinasara.
+  const bubbleEl = document.getElementById("speech-bubble");
+  function showBubble(on) {
+    if (!bubbleEl) return;
+    if (!on) { bubbleEl.classList.remove("is-on"); return; }
+    // Tanggalin muna bago ibalik (may reflow sa gitna) para muling tumakbo
+    // ang pop-in animation sa bawat bagong linya, hindi lang sa una.
+    bubbleEl.classList.remove("is-on");
+    void bubbleEl.offsetWidth;
+    bubbleEl.classList.add("is-on");
+  }
+
   let typing = null;
   function typeText(text, cb) {
     if (typing) clearInterval(typing);
+    const full = String(text == null ? "" : text);
+    showBubble(full.trim());
+
+    // Nilalagay agad ang BUONG teksto sa DOM, pero nakatago ang hindi pa
+    // naa-type na bahagi (.type-rest, visibility:hidden). Kaya sakto na
+    // agad ang sukat ng bubble sa buong pangungusap at hindi ito
+    // nangangatog/lumalaki habang tumatakbo ang typing effect.
     dialogueEl.textContent = "";
+    const shown = document.createElement("span");
+    const rest = document.createElement("span");
+    rest.className = "type-rest";
+    rest.textContent = full;
+    dialogueEl.appendChild(shown);
+    dialogueEl.appendChild(rest);
+
     let i = 0;
     typing = setInterval(function () {
-      dialogueEl.textContent += text.charAt(i); i++;
-      if (i >= text.length) { clearInterval(typing); typing = null; if (cb) cb(); }
+      i++;
+      shown.textContent = full.slice(0, i);
+      rest.textContent = full.slice(i);
+      if (i >= full.length) { clearInterval(typing); typing = null; if (cb) cb(); }
     }, 16);
   }
   function clearControls() { controlsEl.innerHTML = ""; }
@@ -287,22 +350,56 @@
     b.className = cls; b.textContent = label;
     b.addEventListener("click", onclick); controlsEl.appendChild(b); return b;
   }
-  function showModal(html) { modalCard.innerHTML = html; modal.classList.remove("hidden"); }
+  // Itago rin ang bubble tuwing may modal (resulta/katapusan) -- tapos na
+  // ang pag-uusap sa puntong iyon.
+  function showModal(html) { showBubble(false); modalCard.innerHTML = html; modal.classList.remove("hidden"); }
   function hideModal() { modal.classList.add("hidden"); }
 
   function updateHUD() {
     progressEl.textContent = t("caseOf")(idx + 1, CASES.length);
     scoreEl.textContent = t("points")(score);
+    updateMonitor(currentCase);
     saveState();
   }
-  document.addEventListener("cicl:langchange", updateHUD);
+
+  // "Edad: N" sa monitor AT sa papel ng dokumento -- pareho itong dapat
+  // mag-translate kapag nagpalit ng wika, kahit bukas na ang folder panel.
+  function updateChildAge() {
+    if (!childAgeEl) return;
+    const age = currentCase && currentCase.bata && typeof currentCase.bata.age === "number" ? currentCase.bata.age : null;
+    childAgeEl.textContent = age !== null ? t("ageLabel")(age) : "";
+  }
+
+  // "Tumatawag: magulang ni X" -- naka-Tagalog/Ingles din dapat kahit
+  // bukas na ang telepono na panel habang nagpapalit ng wika.
+  function updateCallTarget() {
+    if (!callTargetEl) return;
+    const isEn = window.ciclLang && window.ciclLang.get() === "en";
+    const childName = currentCase && currentCase.bata ? (currentCase.bata.name || currentCase.bata.label) : "";
+    callTargetEl.textContent = childName ? (isEn ? "parent of " + childName : "magulang ni " + childName) : "";
+  }
+
+  function onLangChange() {
+    updateHUD();
+    updateChildAge();
+    if (callPanel && !callPanel.classList.contains("hidden")) {
+      updateCallTarget();
+      if (callDialogueIsGreeting) {
+        callDialogueEl.textContent = currentCase ? t("callGreeting") : t("noActiveCase");
+      }
+    }
+  }
+  document.addEventListener("cicl:langchange", onLangChange);
 
   function loadCase(i) {
     const c = CASES[i]; currentCase = c;
     closePanels();
     updateHUD();
     caseNoEl.textContent = c.caseno || "--";
-    statementEl.innerHTML = '<b>Salaysay:</b> ' + (c.intro || "");
+    caseTitleEl.textContent = c.title || "";
+    childNameEl.textContent = c.bata ? (c.bata.name || c.bata.label || "--") : "--";
+    updateChildAge();
+    statementEl.textContent = c.intro || "";
 
     // Parang naglalakad ang bata papalapit mula sa hallway: maliit at
     // malabo muna, tapos lumalaki at lumilinaw sa loob ng ~3 segundo.
@@ -319,10 +416,10 @@
 
     evidenceEl.innerHTML = "";
     (c.ebidensya || []).forEach(function (e) {
-      const card = document.createElement("div");
-      card.className = "evi-card";
-      card.innerHTML = '<div class="evi-label">' + e.label + '</div><div class="evi-text">' + e.text + '</div>';
-      evidenceEl.appendChild(card);
+      const item = document.createElement("div");
+      item.className = "evi-item";
+      item.innerHTML = '<b>' + e.label + ':</b> ' + e.text;
+      evidenceEl.appendChild(item);
     });
 
     if (CASES[i + 1]) preloadCase(CASES[i + 1]);   // ihanda na ang susunod na bata
@@ -383,6 +480,19 @@
     setMood("ginhawa");
     const r = c.resulta || {};
     let html = '<h2>' + (c.type === "mabuti" ? t("goodDeed") : t("lessonResult")) + '</h2>';
+    // "Salita laban sa Ginawa": ipinapakita ang eksaktong sugarcoated na
+    // parirala ng bata (mula sa unang sinabi niya) kontra sa payak na
+    // totoo -- reveal moment bago ang buong paliwanag, para literal na
+    // makita ng manlalaro na hindi nagbabago ang totoong nangyari kahit
+    // maganda ang pagkakasabi. Lumalabas lang kapag may sugarcoat data
+    // ang kasong ito (hindi lahat ng kaso).
+    if (c.sugarcoat && c.sugarcoat.phrase && c.sugarcoat.totoo) {
+      html += '<div class="sugarcoat-box">'
+        + '<div class="sugarcoat-title">' + t("sugarcoatTitle") + '</div>'
+        + '<div class="sugarcoat-line sugarcoat-said"><span class="sugarcoat-tag">' + t("sugarcoatSaid") + '</span> “' + c.sugarcoat.phrase + '”</div>'
+        + '<div class="sugarcoat-line sugarcoat-truth"><span class="sugarcoat-tag">' + t("sugarcoatTruth") + '</span> ' + c.sugarcoat.totoo + '</div>'
+        + '</div>';
+    }
     html += '<p><b>' + t("truthLabel") + '</b> ' + (r.tapat || "") + '</p>';
     if (r.tamang_landas) html += '<p><b>' + t("pathLabel") + '</b> ' + r.tamang_landas + '</p>';
     if (r.tandaan) html += '<div class="tandaan-box"><div class="tandaan-title">' + t("reminderTitle") + '</div><p>' + r.tandaan + '</p></div>';
@@ -417,7 +527,14 @@
     callPanel.classList.add("hidden");
   }
 
+  // True habang ipinapakita pa rin ang chrome na pambungad na greeting
+  // (hindi pa sagot mula sa kwento), kaya dapat pa rin itong sumunod sa
+  // pagpalit ng wika. Nagiging false sa sandaling may nasagot na, dahil
+  // Tagalog na talaga ang sagot na iyon (galing sa cases.json).
+  let callDialogueIsGreeting = true;
+
   function renderCallOptions() {
+    callDialogueIsGreeting = true;
     callControlsEl.innerHTML = "";
     const list = (currentCase && currentCase.tawag_magulang) || [];
     if (!list.length) {
@@ -431,6 +548,7 @@
       b.className = "q-btn";
       b.textContent = qa.tanong;
       b.addEventListener("click", function () {
+        callDialogueIsGreeting = false;
         callDialogueEl.textContent = "“" + qa.sagot + "”";
         b.classList.add("asked");
       });
@@ -443,6 +561,7 @@
 
   document.getElementById("phone-btn").addEventListener("click", function () {
     callDialogueEl.textContent = currentCase ? t("callGreeting") : t("noActiveCase");
+    updateCallTarget();
     renderCallOptions();
     openPanel(callPanel);
   });

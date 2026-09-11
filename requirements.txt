@@ -15,3 +15,12 @@ scikit-learn
 # kung babaguhin ang mga file sa law_source/) -- hindi kailangan sa
 # pag-run ng app mismo.
 pdfplumber
+
+# Taglish speech-to-text (SOP 1) -- Whisper-small via Hugging Face
+# transformers, ginagamit ng stt_engine.py sa /api/stt endpoint. Kailangan
+# rin ng ffmpeg (binary, hindi pip package) na naka-install at nasa PATH
+# para sa audio conversion (tingnan ang README para sa setup sa Windows
+# via conda-forge). Sa unang aktwal na request lang lino-load ang modelo
+# (~1GB, ida-download kung wala pa sa cache), hindi sa server startup.
+torch
+transformers

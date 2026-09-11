@@ -185,6 +185,29 @@ QUERY_SYNONYMS = {
     "nadedetine": ["detention", "kulong", "bahay", "pagasa", "custody"],
     "dedetenin": ["detention", "kulong", "bahay", "pagasa", "custody"],
     "idedetine": ["detention", "kulong", "bahay", "pagasa", "custody"],
+
+    # Round-4 (item 9): karagdagang kolokyal/maling-baybay na variants na
+    # nakita sa pinakahuling test transcript, sinusunod ang parehong
+    # ingat na tinuran ng user -- idinagdag lang ang mga ito dahil
+    # ipinakita ng aktwal na tanong (hindi basta idinagdag ang bawat
+    # posibleng typo na maiisip, dahil maaari itong makasira sa ibang
+    # salita nang hindi sinasadya).
+    "abugado": ["counsel", "lawyer", "pao"],
+    "dibersyon": ["diversion", "intervention"],
+    "dibersion": ["diversion", "intervention"],
+    "diversyon": ["diversion", "intervention"],
+    "kustodiya": ["custody", "detention"],
+    "kastodiya": ["custody", "detention"],
+    "nahuli": ["custody", "apprehension", "detention"],
+    "nahuling": ["custody", "apprehension", "detention"],
+    # Sinadyang HINDI idinagdag ang "huli" (walang panlapi) -- masyadong
+    # ambiguous ang salitang ito sa Tagalog (maaari ring mangahulugang
+    # "late", tulad sa "huling tanong"/"huli na"), kaya maaari itong
+    # magdulot ng maling retrieval sa mga tanong na walang kinalaman sa
+    # pagkahuli/pag-aresto. Ang mga naka-panlapi lang (nahuli, nahuling,
+    # naaresto) ang idinagdag dahil mas malinaw ang kahulugan ng mga ito.
+    "naaresto": ["custody", "apprehension", "detention"],
+    "maaaresto": ["custody", "apprehension", "detention"],
 }
 
 

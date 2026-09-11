@@ -9,7 +9,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "neutral",
-        "art": "bata01"
+        "art": "bata01",
+        "name": "Ana",
+        "age": 13
       },
       "intro": "Kumusta po. Nahiram ko lang naman po kasi yung cellphone sa palengke, balak ko naman po sanang isauli.",
       "ebidensya": [
@@ -75,7 +77,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "kabado",
-        "art": "bata02"
+        "art": "bata01",
+        "name": "Ana",
+        "age": 13
       },
       "intro": "Kumusta po. Nakakita po ako ng pitaka sa daan, dinala ko po agad sa barangay para maisauli sa may-ari.",
       "ebidensya": [
@@ -122,7 +126,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "kabado",
-        "art": "bata03"
+        "art": "bata03",
+        "name": "Jerome",
+        "age": 14
       },
       "caseno": "K-02",
       "intro": "Kumusta po. Nagtanggol lang po ako ng kaibigan ko, siya po ang unang sinaktan.",
@@ -170,7 +176,11 @@
           "tanong": "Madalas ba siyang makasangkot sa gulo?",
           "sagot": "Hindi po, ito lang po talaga ang unang beses, malambing at mahinahon po talaga siya."
         }
-      ]
+      ],
+      "sugarcoat": {
+        "phrase": "nagtanggol lang ako",
+        "totoo": "sumobra ang ginawang pagganti, hindi na depensa sa sarili"
+      }
     },
     {
       "id": "vandalismo",
@@ -180,7 +190,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "kabado",
-        "art": "bata04"
+        "art": "bata04",
+        "name": "Renz",
+        "age": 16
       },
       "caseno": "K-03",
       "intro": "Kumusta po. Sumulat lang po ako ng pangalan namin sa pader, gusto lang po ipakita na magkaibigan kami.",
@@ -228,7 +240,11 @@
           "tanong": "Ano po ang gagawin niyo bilang magulang?",
           "sagot": "Sasamahan ko po siyang humingi ng paumanhin at tutulungan siyang bayaran ang gastos sa muling pagpinta."
         }
-      ]
+      ],
+      "sugarcoat": {
+        "phrase": "sumulat lang ng pangalan namin",
+        "totoo": "sinira ang ari-arian ng barangay nang walang pahintulot"
+      }
     },
     {
       "id": "droga",
@@ -238,7 +254,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "kabado",
-        "art": "bata05"
+        "art": "bata05",
+        "name": "Carlo",
+        "age": 12
       },
       "caseno": "K-04",
       "intro": "Kumusta po. Pinapadala lang po ako ng kapitbahay ko ng maliit na pakete, hindi ko po alam kung ano ang laman.",
@@ -286,7 +304,11 @@
           "tanong": "Sino po ang kapitbahay na nagpadala?",
           "sagot": "Ibibigay ko po ang impormasyon sa barangay para masuri ito nang maayos."
         }
-      ]
+      ],
+      "sugarcoat": {
+        "phrase": "pinapadala lang, hindi ko alam ang laman",
+        "totoo": "may hinala sa laman ng pakete pero itinuloy pa rin ang paghahatid"
+      }
     },
     {
       "id": "inuman",
@@ -296,7 +318,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "kabado",
-        "art": "bata06"
+        "art": "bata06",
+        "name": "Grace",
+        "age": 16
       },
       "caseno": "K-05",
       "intro": "Kumusta po. Kasama lang po ako ng mga kuya sa plaza, hindi po ako uminom, nanonood lang po ako.",
@@ -344,7 +368,11 @@
           "tanong": "May balak po ba kayong gawin?",
           "sagot": "Pagbabawalan ko na po siyang makisama doon at babantayan ko na po ang oras niya sa labas."
         }
-      ]
+      ],
+      "sugarcoat": {
+        "phrase": "nanonood lang, hindi ako uminom",
+        "totoo": "lumahok din sa pag-inom kahit menor de edad pa"
+      }
     },
     {
       "id": "cyberbully",
@@ -354,7 +382,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "kabado",
-        "art": "bata07"
+        "art": "bata07",
+        "name": "Nico",
+        "age": 15
       },
       "caseno": "K-06",
       "intro": "Kumusta po. Nagbiro lang po ako sa kaklase ko online, hindi ko po alam na masasaktan siya.",
@@ -402,7 +432,11 @@
           "tanong": "Ano ang gagawin niyo?",
           "sagot": "Kakausapin ko po siya tungkol sa responsableng paggamit ng internet at hihilingin naming mag-sorry."
         }
-      ]
+      ],
+      "sugarcoat": {
+        "phrase": "nagbiro lang ako online",
+        "totoo": "nasaktan at nahiya ang kapwa bata dahil kumalat ang post"
+      }
     },
     {
       "id": "armas",
@@ -412,7 +446,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "kabado",
-        "art": "bata08"
+        "art": "bata08",
+        "name": "Trisha",
+        "age": 17
       },
       "caseno": "K-07",
       "intro": "Kumusta po. Dala ko lang po ang kutsilyo dahil natatakot po ako sa mga bully sa amin, hindi ko po balak gamitin.",
@@ -460,7 +496,11 @@
           "tanong": "May balak po ba kayong gawin?",
           "sagot": "Kakausapin ko po siya at sasamahan ko siyang magsumbong sa guro tungkol sa bullying."
         }
-      ]
+      ],
+      "sugarcoat": {
+        "phrase": "dala ko lang para sa proteksyon",
+        "totoo": "mapanganib pa ring dalhin ang patalim sa paaralan, laban sa patakaran"
+      }
     },
     {
       "id": "sugal",
@@ -470,7 +510,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "kabado",
-        "art": "bata09"
+        "art": "bata09",
+        "name": "Kim",
+        "age": 14
       },
       "caseno": "K-08",
       "intro": "Kumusta po. Naglaro lang po ako ng online game, hindi ko po alam na may pustahan pala.",
@@ -518,7 +560,11 @@
           "tanong": "Ano po ang gagawin niyo?",
           "sagot": "Kakausapin ko po siya tungkol sa panganib nito at bibigyan ko po siya ng ibang gawain sa oras niya."
         }
-      ]
+      ],
+      "sugarcoat": {
+        "phrase": "naglaro lang ng online game",
+        "totoo": "alam na may pustahang pera pero itinuloy pa rin ang paglalaro"
+      }
     },
     {
       "id": "rambol",
@@ -528,7 +574,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "kabado",
-        "art": "bata10"
+        "art": "bata10",
+        "name": "Bea",
+        "age": 16
       },
       "caseno": "K-09",
       "intro": "Kumusta po. Sumama lang po ako sa mga kaibigan ko, hindi ko po alam na may planong magkagulo.",
@@ -576,7 +624,11 @@
           "tanong": "Ano po ang balak niyong gawin?",
           "sagot": "Ilalayo ko po siya sa grupong iyon at babantayan ko na po siya nang mas mabuti."
         }
-      ]
+      ],
+      "sugarcoat": {
+        "phrase": "sumama lang ako sa mga kaibigan",
+        "totoo": "may narinig tungkol sa planong rambol pero sumama pa rin"
+      }
     },
     {
       "id": "holdap",
@@ -586,7 +638,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "kabado",
-        "art": "bata01"
+        "art": "bata02",
+        "name": "Miguel",
+        "age": 15
       },
       "caseno": "K-10",
       "intro": "Kumusta po. Hiningi ko lang po ang cellphone niya, hindi ko naman po pinilit, pinahiram lang naman niya.",
@@ -634,7 +688,11 @@
           "tanong": "Ano po ang gagawin niyo bilang magulang?",
           "sagot": "Kakausapin ko po siya nang mabuti at sasamahan ko siyang humingi ng tawad at isauli ang gamit."
         }
-      ]
+      ],
+      "sugarcoat": {
+        "phrase": "hiningi ko lang, pinahiram naman niya",
+        "totoo": "pinilit at tinakot ang biktima para makuha ang cellphone"
+      }
     },
     {
       "id": "tumulong",
@@ -644,7 +702,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "neutral",
-        "art": "bata02"
+        "art": "bata02",
+        "name": "Miguel",
+        "age": 15
       },
       "caseno": "M-02",
       "intro": "Kumusta po. May nakita po akong nahulog na bata sa daan, tinulungan ko po siya at dinala sa clinic.",
@@ -692,7 +752,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "neutral",
-        "art": "bata03"
+        "art": "bata03",
+        "name": "Jerome",
+        "age": 14
       },
       "caseno": "M-03",
       "intro": "Kumusta po. Ako po ang nakabasag ng bintana ng paaralan, sinabi ko po agad sa guro kahit walang nakakita.",
@@ -740,7 +802,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "neutral",
-        "art": "bata04"
+        "art": "bata04",
+        "name": "Renz",
+        "age": 16
       },
       "caseno": "M-04",
       "intro": "Kumusta po. Inanyayahan po ako ng mga kaibigan kong sumama sa pag-inom, pero tumanggi po ako at umuwi na lang.",
@@ -788,7 +852,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "neutral",
-        "art": "bata05"
+        "art": "bata05",
+        "name": "Carlo",
+        "age": 12
       },
       "caseno": "M-05",
       "intro": "Kumusta po. Nabigyan po ako ng sobrang sukli sa tindahan, ibinalik ko po agad sa tindera.",
@@ -836,7 +902,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "neutral",
-        "art": "bata06"
+        "art": "bata06",
+        "name": "Grace",
+        "age": 16
       },
       "caseno": "M-06",
       "intro": "Kumusta po. Nakita ko pong may binu-bully sa eskwelahan, sinabi ko po agad sa guro kahit natatakot po ako.",
@@ -884,7 +952,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "neutral",
-        "art": "bata07"
+        "art": "bata07",
+        "name": "Nico",
+        "age": 15
       },
       "caseno": "M-07",
       "intro": "Kumusta po. May nakita po akong matandang naliligaw, sinamahan ko po siya hanggang sa bahay nila.",
@@ -932,7 +1002,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "neutral",
-        "art": "bata08"
+        "art": "bata08",
+        "name": "Trisha",
+        "age": 17
       },
       "caseno": "M-08",
       "intro": "Kumusta po. Inanyayahan po ako ng mga kaibigan na mag-skip ng klase, pero pumasok pa rin po ako.",
@@ -980,7 +1052,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "neutral",
-        "art": "bata09"
+        "art": "bata09",
+        "name": "Kim",
+        "age": 14
       },
       "caseno": "M-09",
       "intro": "Kumusta po. May nakita po akong asong nasaktan sa kalye, dinala ko po ito sa aming bahay at inalagaan.",
@@ -1028,7 +1102,9 @@
       "bata": {
         "label": "Bata",
         "mood_start": "neutral",
-        "art": "bata10"
+        "art": "bata10",
+        "name": "Bea",
+        "age": 16
       },
       "caseno": "M-10",
       "intro": "Kumusta po. Nakakita po ako ng bag na naiwan sa jeep, ibinigay ko po agad sa driver at sinabi kung kanino ito.",
